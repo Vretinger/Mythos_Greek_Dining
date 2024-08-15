@@ -27,6 +27,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['8000-vretinger-mythosgreekdi-dqku4xoxldz.ws-eu115.gitpod.io']
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://8000-vretinger-mythosgreekdi-dqku4xoxldz.ws-eu115.gitpod.io',
+]
 
 # Application definition
 
