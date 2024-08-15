@@ -1,0 +1,12 @@
+<!-- templates/bookings/booking_form.html -->
+
+{% extends 'base_generic.html' %}
+
+{% block content %}
+  <h1>Book a Table</h1>
+  <form method="post" action="{% url 'booking_create' %}">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Book Now</button>
+  </form>
+{% endblock %}

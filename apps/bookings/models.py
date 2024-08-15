@@ -1,3 +1,5 @@
+# bookings/models.py
+
 from django.db import models
 
 class Table(models.Model):
@@ -10,10 +12,12 @@ class Table(models.Model):
 
 class Booking(models.Model):
     guest_name = models.CharField(max_length=100)
+    guest_email = models.EmailField(default='no-reply@example.com')
+    phone = models.CharField(max_length=20, default='000-000-0000')
     booking_date = models.DateField()
     booking_time = models.TimeField()
     number_of_guests = models.IntegerField()
-    table = models.ForeignKey(Table, on_delete=models.CASCADE)
+    table = models.ForeignKey(Table, on_delete=models.SET_NULL, null=True, blank=True)
     special_requests = models.TextField(blank=True, null=True)
 
     def __str__(self):
