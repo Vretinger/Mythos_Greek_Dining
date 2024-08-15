@@ -1,3 +1,20 @@
 from django.db import models
 
-# Create your models here.
+class Table(models.Model):
+    table_number = models.IntegerField(unique=True)
+    capacity = models.IntegerField()
+    available = models.BooleanField(default=True)
+
+    def __str__(self):
+        return f"Table {self.table_number} - {self.capacity} seats"
+
+class Booking(models.Model):
+    guest_name = models.CharField(max_length=100)
+    booking_date = models.DateField()
+    booking_time = models.TimeField()
+    number_of_guests = models.IntegerField()
+    table = models.ForeignKey(Table, on_delete=models.CASCADE)
+    special_requests = models.TextField(blank=True, null=True)
+
+    def __str__(self):
+        return f"{self.guest_name} - {self.booking_date} at {self.booking_time}"
