@@ -1,0 +1,28 @@
+{% extends 'base_generic.html' %}
+
+{% load static %}
+
+{% block title %}Home - Mythos Greek Dining{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <img src="{% static 'images/hero-image.jpg' %}" alt="Hero Image">
+    <div class="hero-text">
+        <h1>Experience the Best Dining in Town</h1>
+        <a href="{% url 'booking_create' %}" class="cta-button">Book a Table Now</a>
+    </div>
+</section>
+
+<section class="about-us">
+    <div class="about-text">
+        <h2>About Us</h2>
+        <p>Welcome to our restaurant, where we serve the finest dishes made with love and passion...</p>
+    </div>
+    <div class="about-image">
+        <img src="{% static 'images/about-image.jpg' %}" alt="About Us Image">
+    </div>
+</section>
+
+<!-- Additional sections like Menu Highlights, Reservation, etc. -->
+
+{% endblock %}
