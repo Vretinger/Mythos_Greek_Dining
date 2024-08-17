@@ -2,8 +2,8 @@
 
 {% block title %}Home - Mythos Greek Dining{% endblock %}
 
-{% block content %}
 {% load static %}
+{% block hero %}
 <div class="container-fluid p-0">
     <!-- Hero Section -->
     <section class="hero">
@@ -12,8 +12,9 @@
             <a href="{% url 'booking_create' %}" class="btn btn-primary btn-lg">Book a Table Now</a>
         </div>
     </section>
+{% endblock %}
     
-
+{% block content %}
     <!-- About Us Section -->
     <section class="about-us py-5">
         <div class="container">

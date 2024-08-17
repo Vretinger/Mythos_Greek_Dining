@@ -1,3 +1,5 @@
+
+/* Base Styles */
 html, body {
     height: 100%;
     margin: 0;
@@ -7,22 +9,157 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
-header {
+/* Hero Section */
+.hero {
+    position: relative; /* Ensure hero section's positioning is relative to its container */
+    width: 100%;
+    height: 100vh; /* Full viewport height */
+    background-image: url("../images/hero-image.jpg");
+    background-size: cover; /* Ensure the image covers the entire section */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center; /* Center content vertically */
+    justify-content: center; /* Center content horizontally */
+    color: #fff; /* White text for contrast */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Optional text shadow */
+    z-index: 1; /* Ensure hero section is behind the navbar */
+}
+
+.hero-text {
+    position: relative;
+    z-index: 1; /* Ensure text is above the background image */
+    padding: 20px;
+}
+
+.hero-text h1 {
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+.hero-text .btn {
+    margin-top: 20px;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-100%);
+        background-color: transparent;
+    }
+    to {
+        transform: translateY(0);
+        background-color: #F5F8EF; /* Desired background color */
+    }
+}
+
+@keyframes slideOut {
+    from {
+        transform: translateY(0);
+        background-color: #F5F8EF; /* Desired background color */
+    }
+    to {
+        transform: translateY(-100%);
+        background-color: transparent;
+    }
+}
+
+
+/* Navbar Styles */
+#navbar {
+    position: fixed;
+    top: 0; /* Stick to the top of the viewport */
+    width: 100%;
+    height: 150px; /* Default height */
+    transition: height 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+    overflow: hidden; /* Hide overflow from sliding effect */
+    z-index: 10; /* Ensure navbar content is on top */
+    display: flex; /* Use flexbox for layout */
+    align-items: center; /* Center content vertically */
+    justify-content: center; /* Center content horizontally */
+}
+
+/* Navbar Placeholder for Smooth Transition */
+#navbar-placeholder {
+    height: 150px; /* Same as default height of navbar */
     width: 100%;
 }
 
+/* Navbar Fixed State */
+#navbar.fixed {
+    height: 100px; /* Reduced height when scrolled */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Optional shadow */
+}
+
+/* Background Navbar Animation */
+.bg-navbar {
+    position: absolute; /* Position it relative to the navbar */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: transparent; /* Initial background color */
+    transition: background-color 0.3s ease;
+    z-index: -1; /* Ensure it stays behind other content */
+}
+
+#navbar.scrolled .bg-navbar {
+    animation: slideIn 0.5s forwards; /* Slide in with background color */
+}
+
+#navbar:not(.scrolled) .bg-navbar {
+    animation: slideOut 0.5s forwards; /* Slide out with background color */
+}
+
+/* Navbar Content Initial State */
+.navbar-content {
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items horizontally */
+    justify-content: center; /* Center items vertically */
+    position: absolute; /* Absolute positioning for overlay effect */
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -60%); /* Initial positioning */
+    text-align: center; /* Center text */
+    z-index: 10;
+    opacity: 1; /* Initially hidden */
+    transition: opacity 0.5s ease, transform 0.5s ease; /* Smooth transition for opacity and transform */
+}
+
+/* Navbar Content Scrolled State */
+#navbar.scrolled .navbar-content {
+    opacity: 1; /* Show content */
+    transform: translate(-50%, -30%); /* Adjust position */
+}
+
+/* Logo */
 .logo {
     background: url("../images/logo.png") no-repeat;
     background-size: contain; /* Ensure the image fits within the element */
     height: 150px; /* Adjust the height as needed */
     width: 150px; /* Adjust the width as needed */
     display: block; /* Ensure it's a block element */
+    transition: opacity 0.2s ease; /* Transition opacity */
+    z-index: 1; /* Ensure the logo is above the background */
 }
 
-.bg-navbar {
-    background-color: #F5F8EF;
+/* Restaurant Name */
+.restaurant-name {
+    opacity: 0; /* Start hidden */
+    padding-top: 50px;
+    transform: translateY(0px); /* Start slightly above */
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    font-size: 1.5rem; /* Adjust font size if needed */
+    color: #333; /* Adjust text color if needed */
+    white-space: nowrap; /* Prevents text from wrapping */
 }
 
+#navbar.scrolled .restaurant-name {
+    opacity: 1; /* Show text after scrolling */
+    transform: translateY(0); /* Slide into place */
+}
+
+
+/* Navbar Links */
 #nav {
     margin: 0;
     padding: 0;
@@ -63,40 +200,7 @@ header {
     background: rgba(0, 0, 0, 0.2);
 }
 
-.hero {
-    position: relative;
-    width: 100%;
-    height: 100vh; /* Full viewport height */
-    background-image: url("../images/hero-image.jpg");
-    background-size: cover; /* Ensures the image covers the entire section */
-    background-position: center; /* Centers the image */
-    background-repeat: no-repeat;
-    margin: 0; /* Removes any default margin */
-    padding: 0; /* Removes any default padding */
-    overflow: hidden; /* Prevents overflow issues */
-    display: flex;
-    align-items: center; /* Center content vertically */
-    justify-content: center; /* Center content horizontally */
-    color: #fff; /* White text for contrast */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Optional text shadow */
-}
-
-.hero-text {
-    position: relative;
-    z-index: 1; /* Ensure text is above the background image */
-    padding: 20px;
-}
-
-.hero-text h1 {
-    font-size: 3rem;
-    font-weight: bold;
-}
-
-.hero-text .btn {
-    margin-top: 20px;
-}
-
-/* Responsive adjustments */
+/* Responsive Adjustments */
 @media (max-width: 768px) {
     .hero-text h1 {
         font-size: 2rem;
