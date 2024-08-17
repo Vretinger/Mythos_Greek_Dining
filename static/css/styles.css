@@ -1,0 +1,108 @@
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+header {
+    width: 100%;
+}
+
+.logo {
+    background: url("../images/logo.png") no-repeat;
+    background-size: contain; /* Ensure the image fits within the element */
+    height: 150px; /* Adjust the height as needed */
+    width: 150px; /* Adjust the width as needed */
+    display: block; /* Ensure it's a block element */
+}
+
+.bg-navbar {
+    background-color: #F5F8EF;
+}
+
+#nav {
+    margin: 0;
+    padding: 0;
+    text-align: right;
+}
+
+.menucontainer {
+    font-size: 0; /* Reset font size to prevent spacing issues */
+}
+
+.menuitem {
+    text-align: center;
+}
+
+.menuitem a {
+    text-decoration: none;
+    color: #333; /* Change to desired color */
+    display: block;
+    height: 120px;
+    line-height: 120px; /* Center text vertically */
+    padding: 0;
+}
+
+.menuitem a i {
+    font-size: 26px;
+    color: #fafafa;
+}
+
+.menuitem span {
+    font-size: 14px;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #333; /* Change to desired color */
+}
+
+.hvr-sweep-to-bottom::before {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.hero {
+    position: relative;
+    width: 100%;
+    height: 100vh; /* Full viewport height */
+    background-image: url("../images/hero-image.jpg");
+    background-size: cover; /* Ensures the image covers the entire section */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat;
+    margin: 0; /* Removes any default margin */
+    padding: 0; /* Removes any default padding */
+    overflow: hidden; /* Prevents overflow issues */
+    display: flex;
+    align-items: center; /* Center content vertically */
+    justify-content: center; /* Center content horizontally */
+    color: #fff; /* White text for contrast */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Optional text shadow */
+}
+
+.hero-text {
+    position: relative;
+    z-index: 1; /* Ensure text is above the background image */
+    padding: 20px;
+}
+
+.hero-text h1 {
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+.hero-text .btn {
+    margin-top: 20px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .hero-text h1 {
+        font-size: 2rem;
+    }
+
+    .hero {
+        height: 60vh; /* Adjust height for smaller screens */
+    }
+}

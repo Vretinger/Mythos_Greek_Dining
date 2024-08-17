@@ -1,42 +1,52 @@
-{% load static %} 
+{% load static %}
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Mythos Greek Dining{% endblock %}</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.1.1/css/hover-min.css" type="text/css" />
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="{% static 'js/github-information.js' %}"></script>
+    <title>{% block title %}Mythos Greek Dining{% endblock %}</title>
 </head>
 <body>
     <header>
-        <div class="logo">
-            <img src="{% static 'images/logo.png' %}" alt="Restaurant Logo">
+        <div class="container-fluid">
+            <div class="row justify-content-between navbar fixed-top">
+                <!-- Logo -->
+                <a href="{% url 'home' %}" class="logo col-4"></a>
+                <!-- Navbar links -->
+                <nav class="col-4">
+                    <ul id="nav" class="nav justify-content-end">
+                        <li class="nav-item list-inline-item menuitem">
+                            <a href="{% url 'home' %}" class="hvr-sweep-to-bottom"><i class="fa fa-home" aria-hidden="true"></i><span>Home</span></a>
+                        </li>
+                        <li class="nav-item list-inline-item menuitem">
+                            <a href="{% url 'menu' %}" class="hvr-sweep-to-bottom"><i class="fa fa-utensils" aria-hidden="true"></i><span>Menu</span></a>
+                        </li>
+                        <li class="nav-item list-inline-item menuitem">
+                            <a href="{% url 'booking_create' %}" class="hvr-sweep-to-bottom"><i class="fa fa-calendar-check" aria-hidden="true"></i><span>Booking</span></a>
+                        </li>
+                        <li class="nav-item list-inline-item menuitem">
+                            <a href="{% url 'contact' %}" class="hvr-sweep-to-bottom"><i class="fa fa-envelope" aria-hidden="true"></i><span>Contact</span></a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
         </div>
-        <nav>
-            <ul>
-                <li><a href="{% url 'home' %}">Home</a></li>
-                <li><a href="{% url 'menu' %}">Menu</a></li>
-                <li><a href="{% url 'booking_create' %}">Book a Table</a></li>
-                <li><a href="{% url 'contact' %}">Contact Us</a></li>
-            </ul>
-        </nav>
     </header>
 
     <main>
         {% block content %}
-        <!-- Content specific to each page will be injected here -->
         {% endblock %}
     </main>
 
-    <footer>
-        <div class="social-media">
-            <a href="#"><img src="{% static 'images/facebook-icon.png' %}" alt="Facebook"></a>
-            <a href="#"><img src="{% static 'images/twitter-icon.png' %}" alt="Twitter"></a>
-        </div>
-        <p>&copy; 2024 Mythos Greek Dining. All rights reserved.</p>
-    </footer>
-
-    <script src="{% static 'js/main.js' %}"></script>
+    <!-- Add Bootstrap JS (optional) -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
