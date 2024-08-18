@@ -309,6 +309,86 @@ body {
     padding-left: 0;
 }
 
+.img-fluid {
+    background-size: contain; /* Ensure the image fits within the element */
+    height: 150px; /* Adjust the height as needed */
+    width: 150px; /* Adjust the width as needed */
+    display: block; /* Ensure it's a block element */
+    border-radius: 5px;
+}
+
+
+.main-footer {
+    background-color: #222; /* Dark background */
+    color: #fbf8e6; /* Light text */
+    padding-top: 50px;
+}
+
+.footer-column {
+    margin-bottom: 20px;
+}
+
+.footer-title h3 {
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 1.75em;
+    color: #fbf8e6;
+}
+
+.footer-content p,
+.footer-links li a {
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    color: #fbf8e6;
+    margin-bottom: 1.75em;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li {
+    margin-bottom: 5px;
+}
+
+.footer-links li a:hover {
+    color: rgba(255, 255, 255, 0.65);
+}
+
+.social-icons {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 28px;
+}
+
+.social-icons li {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.footer-policy {
+    list-style: none;
+    padding: 0;
+    display: inline-flex;
+    margin-left: -13px;
+}
+
+.footer-policy li {
+    margin-left: 13px;
+}
+
+.footer-policy li a:hover {
+    color: rgba(255, 255, 255, 0.65);
+}
+
+.text-right {
+    text-align: right;
+}
+
+
 /* Responsive Adjustments */
 @media (max-width: 768px) {
     .hero-text h1 {
