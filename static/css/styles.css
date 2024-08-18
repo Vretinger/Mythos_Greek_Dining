@@ -1,4 +1,3 @@
-
 /* Base Styles */
 html, body {
     height: 100%;
@@ -39,6 +38,10 @@ body {
 
 .hero-text .btn {
     margin-top: 20px;
+}
+
+.about-us {
+    background-color: #F5F8EF;
 }
 
 @keyframes slideIn {
@@ -86,7 +89,7 @@ body {
 
 /* Navbar Fixed State */
 #navbar.fixed {
-    height: 100px; /* Reduced height when scrolled */
+    height: 70px; /* Reduced height when scrolled */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Optional shadow */
 }
 
@@ -117,7 +120,7 @@ body {
     justify-content: center; /* Center items vertically */
     position: absolute; /* Absolute positioning for overlay effect */
     top: 50%; /* Center vertically */
-    left: 50%; /* Center horizontally */
+    left: 50%;
     transform: translate(-50%, -60%); /* Initial positioning */
     text-align: center; /* Center text */
     z-index: 10;
@@ -128,7 +131,7 @@ body {
 /* Navbar Content Scrolled State */
 #navbar.scrolled .navbar-content {
     opacity: 1; /* Show content */
-    transform: translate(-50%, -30%); /* Adjust position */
+    transform: translate(-50%, -10%); /* Adjust position */
 }
 
 /* Logo */
@@ -158,7 +161,6 @@ body {
     transform: translateY(0); /* Slide into place */
 }
 
-
 /* Navbar Links */
 #nav {
     margin: 0;
@@ -174,30 +176,137 @@ body {
     text-align: center;
 }
 
-.menuitem a {
-    text-decoration: none;
-    color: #333; /* Change to desired color */
-    display: block;
-    height: 120px;
-    line-height: 120px; /* Center text vertically */
-    padding: 0;
-}
 
-.menuitem a i {
-    font-size: 26px;
-    color: #fafafa;
-}
-
+/* Smooth transition for menu item spans */
 .menuitem span {
-    font-size: 14px;
-    font-weight: 300;
+    font-size: 15px;
+    font-weight: 400;
     text-transform: uppercase;
     letter-spacing: 1px;
-    color: #333; /* Change to desired color */
+    color: #F5F8EF; /* Change to desired color */
+    transition: color 0.5s ease, transform 0.5s ease;
 }
 
-.hvr-sweep-to-bottom::before {
-    background: rgba(0, 0, 0, 0.2);
+#navbar.scrolled .menuitem span {
+    color: #333; /* Change color when scrolled */
+}
+
+#navbar:not(.scrolled) .menuitem span {
+    transform: translateY(-10px);
+}
+
+/* Navbar Item */
+.menuitem {
+    padding: 0; /* Remove padding to prevent full height */
+    margin: 0 10px; /* Adjust margin for spacing between items */
+}
+
+/* Link Styling */
+.menuitem a {
+    display: inline-block; /* Make the link's dimensions match the text */
+    padding: 10px 15px; /* Add padding around text for hover area */
+    line-height: normal; /* Ensure line height doesn’t stretch the height */
+    height: auto; /* Allow the link to size according to its content */
+    text-decoration: none; /* Remove underline from links */
+    transition: background 0.3s ease; /* Smooth transition for background color */
+    border-radius: 5px; /* Optional: rounded corners for hover effect */
+}
+
+
+/* Hover Effect */
+.hvr-fade:hover {
+    background: rgba(0, 0, 0, 0.2); /* Background color on hover */
+}
+
+/* Span Styling */
+.menuitem span {
+    font-size: 15px;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #F5F8EF; /* Text color */
+}
+
+.fixed-top {
+    left: 250px;
+    top: 20px;
+}
+
+/* Basic Styles */
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+
+.three-squares-section .square {
+    height: 450px; /* Adjust this height as needed */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    padding: 20px;
+}
+
+.three-squares-section .blue-bg {
+    background-color: #0066cc; /* Nice Greek blue */
+}
+
+.three-squares-section .white-bg {
+    background-color: #fff;
+    color: #333; /* Dark text color for contrast */
+}
+
+/* Button Styles */
+.three-squares-section .btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.three-squares-section .btn-light {
+    background-color: #fff;
+    color: #0066cc;
+}
+
+.three-squares-section .btn-primary {
+    background-color: #0066cc;
+    color: #fff;
+}
+
+/* Center the content inside each square with padding */
+.content {
+    text-align: center;
+    padding: 20px 40px; /* Add padding to the sides */
+    max-width: 100%;
+    box-sizing: border-box; /* Ensure padding doesn't affect width */
+}
+
+/* Map Container Styles */
+.map-container {
+    width: 80%; /* Smaller width */
+    max-width: 100%;
+    height: 200px; /* Adjust height as needed */
+    border-radius: 5px;
+    overflow: hidden;
+    margin: 0 auto; /* Center the map container horizontally */
+}
+
+#three-squares-section{
+    padding: 0;
+    margin: 0;
+}
+
+.no-gutters {
+    margin-right: 0;
+    margin-left: 0;
+}
+
+.no-gutters > .col-md-4 {
+    padding-right: 0;
+    padding-left: 0;
 }
 
 /* Responsive Adjustments */
