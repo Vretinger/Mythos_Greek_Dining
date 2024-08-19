@@ -1,0 +1,130 @@
+{% extends 'base_generic.html' %}
+
+{% block title %}Menu - Mythos Greek Dining{% endblock %}
+
+{% load static %}
+{% block content %}
+    <!-- Banner Section -->
+<section id="menu-banner" class="banner-section d-flex align-items-center justify-content-center text-center text-light">
+    <div class="banner-content">
+        <h1 class="banner-title display-4 mb-2">Our Menu</h1>
+        <p class="banner-subtitle lead mb-0">Experience the Authentic Flavors of Greece</p>
+    </div>
+</section>
+
+    <!-- Menu Section -->
+    <section id="mythos-menu" class="section">
+        <div class="container-fluid p-0">
+            <div class="row">
+                <div class="col-md-3 d-none d-md-block falling-ingridients-left"></div>
+                <div class="col-12 col-md-6 menu-container">
+                    <!-- Appetizers Section -->
+                    <div class="menu-section mb-4">
+                        <h3 class="text-center text-uppercase mb-4">Appetizers</h3>
+                        <div class="d-flex justify-content-center mb-4">
+                            <div class="line line--left border-top border-dark me-3" style="flex: 1;"></div>
+                            <div class="star">-</div>
+                            <div class="line line--right border-top border-dark ms-3" style="flex: 1;"></div>
+                        </div>
+                        <ul class="list-unstyled">
+                            <!-- Sample Menu Item -->
+                            <li class="mb-3">
+                                <h4 class="d-flex justify-content-between align-items-center">
+                                    <span class="item_title">TZATZIKI</span>
+                                    <span class="menu-list__item-price">$6.99</span>
+                                </h4>
+                                <p class="mb-0">Greek yogurt dip with cucumber, garlic, and herbs</p>
+                            </li>
+                            <li class="mb-3">
+                                <h4 class="d-flex justify-content-between align-items-center">
+                                    <span class="item_title">SPANAKOPITA</span>
+                                    <span class="menu-list__item-price">$7.99</span>
+                                </h4>
+                                <p class="mb-0">Spinach and feta cheese wrapped in phyllo pastry</p>
+                            </li>
+                            <li class="mb-3">
+                                <h4 class="d-flex justify-content-between align-items-center">
+                                    <span class="item_title">DOLMADES</span>
+                                    <span class="menu-list__item-price">$8.99</span>
+                                </h4>
+                                <p class="mb-0">Grape leaves stuffed with rice and herbs</p>
+                            </li>
+                            <!-- Add more items as needed -->
+                        </ul>
+                    </div>
+
+                    <!-- Mains Section -->
+                    <div class="menu-section mb-4">
+                        <h3 class="text-center text-uppercase mb-4">Mains</h3>
+                        <div class="d-flex justify-content-center mb-4">
+                            <div class="line line--left border-top border-dark me-3" style="flex: 1;"></div>
+                            <div class="star">-</div>
+                            <div class="line line--right border-top border-dark ms-3" style="flex: 1;"></div>
+                        </div>
+                        <ul class="list-unstyled">
+                            <!-- Sample Menu Item -->
+                            <li class="mb-3">
+                                <h4 class="d-flex justify-content-between align-items-center">
+                                    <span class="item_title">MOUSSAKA</span>
+                                    <span class="menu-list__item-price">$14.99</span>
+                                </h4>
+                                <p class="mb-0">Layered eggplant, potatoes, and ground beef with béchamel sauce</p>
+                            </li>
+                            <li class="mb-3">
+                                <h4 class="d-flex justify-content-between align-items-center">
+                                    <span class="item_title">SOUVLAKI</span>
+                                    <span class="menu-list__item-price">$12.99</span>
+                                </h4>
+                                <p class="mb-0">Grilled skewers of marinated meat served with pita and tzatziki</p>
+                            </li>
+                            <li class="mb-3">
+                                <h4 class="d-flex justify-content-between align-items-center">
+                                    <span class="item_title">PASTITSIO</span>
+                                    <span class="menu-list__item-price">$13.99</span>
+                                </h4>
+                                <p class="mb-0">Baked pasta with ground beef and béchamel sauce</p>
+                            </li>
+                            <!-- Add more items as needed -->
+                        </ul>
+                    </div>
+
+                    <!-- Desserts Section -->
+                    <div class="menu-section">
+                        <h3 class="text-center text-uppercase mb-4">Desserts</h3>
+                        <div class="d-flex justify-content-center mb-4">
+                            <div class="line line--left border-top border-dark me-3" style="flex: 1;"></div>
+                            <div class="star">-</div>
+                            <div class="line line--right border-top border-dark ms-3" style="flex: 1;"></div>
+                        </div>
+                        <ul class="list-unstyled">
+                            <!-- Sample Menu Item -->
+                            <li class="mb-3">
+                                <h4 class="d-flex justify-content-between align-items-center">
+                                    <span class="item_title">BAKLAVA</span>
+                                    <span class="menu-list__item-price">$5.99</span>
+                                </h4>
+                                <p class="mb-0">Layers of phyllo dough with honey and nuts</p>
+                            </li>
+                            <li class="mb-3">
+                                <h4 class="d-flex justify-content-between align-items-center">
+                                    <span class="item_title">GALAKTOBOUREKO</span>
+                                    <span class="menu-list__item-price">$6.99</span>
+                                </h4>
+                                <p class="mb-0">Custard-filled phyllo pastry with syrup</p>
+                            </li>
+                            <li class="mb-3">
+                                <h4 class="d-flex justify-content-between align-items-center">
+                                    <span class="item_title">LOUKOUMADES</span>
+                                    <span class="menu-list__item-price">$5.99</span>
+                                </h4>
+                                <p class="mb-0">Greek doughnuts with honey and cinnamon</p>
+                            </li>
+                            <!-- Add more items as needed -->
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-3 d-none d-md-block falling-ingridients-right"></div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

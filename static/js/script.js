@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
     var logo = document.getElementById('logo-image');
     var navbarPlaceholder = document.getElementById('navbar-placeholder');
     var lastScrollTop = 0; // Last scroll position
-    var scrollThreshold = 100; // Amount of scroll to trigger fixed positioning
+    var scrollThreshold = 50; // Amount of scroll to trigger fixed positioning
 
     window.addEventListener('scroll', function () {
         var currentScrollTop = window.scrollY;
