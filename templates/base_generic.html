@@ -22,7 +22,7 @@
                     <!-- Background Navbar -->
                     <div class="bg-navbar"></div>
                     <!-- Logo and Restaurant Name -->
-                    <div class="col-md-2 d-flex align-items-center">
+                    <div class="d-none d-md-block align-items-center">
                         <div class="navbar-content">
                             <a href="{% url 'home' %}">
                                 <span class="restaurant-name" id="restaurant-name">Mythos Greek Dining</span>
@@ -30,8 +30,15 @@
                             </a>
                         </div>
                     </div>
-                    <!-- Navbar links -->
-                    <nav class="col-10 fixed-top">
+                    <div class="d-block d-md-none">
+                        <div class="navbar-content">
+                            <a href="{% url 'home' %}">
+                                <span class="restaurant-name" id="restaurant-name">Mythos Greek Dining</span>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Navbar links for larger screens -->
+                    <nav class="d-none d-md-block">
                         <ul id="nav" class="nav justify-content-end">
                             <li class="nav-item list-inline-item menuitem">
                                 <a href="{% url 'home' %}" class="hvr-fade"><span>Home</span></a>
@@ -46,8 +53,35 @@
                                 <a href="{% url 'contact' %}" class="hvr-fade"><span>Contact</span></a>
                             </li>
                         </ul>
-                    </nav>
+                    </nav>              
                 </div>
+                <!-- Collapsible Navbar for small screens -->
+                <div class="d-block d-md-none pos-f-t drop-down">
+                    <nav class="navbar navbar-dark">
+                        <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="toggler-icon closed">☰</span>
+                            <span class="toggler-icon open">✖</span>
+                        </button>
+                    </nav>
+                    <div class="collapse p-0" id="navbarToggleExternalContent">
+                        <div class="bg-drop-down p-2">
+                            <ul id="nav" class="nav flex-column justify-content-center">
+                                <li class="nav-item p-2">
+                                    <a href="{% url 'home' %}" class="btn-collapse"><span>Home</span></a>
+                                </li>
+                                <li class="nav-item p-2">
+                                    <a href="{% url 'menu' %}" class="btn-collapse"><span>Menu</span></a>
+                                </li>
+                                <li class="nav-item p-2">
+                                    <a href="{% url 'booking_create' %}" class="btn-collapse"><span>Booking</span></a>
+                                </li>
+                                <li class="nav-item p-2">
+                                    <a href="{% url 'contact' %}" class="btn-collapse"><span>Contact</span></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>      
             </div>
     </header>
     

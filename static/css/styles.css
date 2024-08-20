@@ -66,7 +66,6 @@ body {
     }
 }
 
-
 /* Navbar Styles */
 #navbar {
     position: fixed;
@@ -119,19 +118,102 @@ body {
     align-items: center; /* Center items horizontally */
     justify-content: center; /* Center items vertically */
     position: absolute; /* Absolute positioning for overlay effect */
-    top: 50%; /* Center vertically */
-    left: 50%;
-    transform: translate(-50%, -60%); /* Initial positioning */
+    transform: translatey(-60%); /* Initial positioning */
     text-align: center; /* Center text */
     z-index: 10;
     opacity: 1; /* Initially hidden */
     transition: opacity 0.5s ease, transform 0.5s ease; /* Smooth transition for opacity and transform */
 }
 
+.btn-collapse {
+    color: #222;
+    font-size: 20px;
+    font-family: 'Roboto', sans-serif;
+    justify-content: center;
+}
+
+.bg-drop-down {
+    background-color: #F5F8EF;
+}
+
+.drop-down {
+    left: 0;
+}
+
+.toggler-icon {
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
+    color: rgba(0, 0, 0, 0.664);
+}
+
+.navbar-toggler[aria-expanded="true"] .closed {
+    display: none;
+}
+
+.navbar-toggler[aria-expanded="true"] .open {
+    display: inline;
+}
+
+.navbar-toggler[aria-expanded="false"] .closed {
+    display: inline;
+}
+
+.navbar-toggler[aria-expanded="false"] .open {
+    display: none;
+}
+
+.navbar-toggler {
+    position: relative;
+    z-index: 2;
+    transform: translatey(25%);
+    border: 2px solid transparent;
+}
+
+.navbar-dark .navbar-toggler{
+    border-color: rgba(0, 0, 0, 0.664);
+}
+
+@media (max-width: 768px) {
+    #navbar {
+        height: 100px;
+        transform: translateY(-30px);
+    }
+    #navbar:not(.scrolled) .bg-navbar  {
+        animation: none;
+    }
+    #navbar.scrolled .bg-navbar  {
+        animation: none;
+    }
+    .bg-navbar {
+        background-color: #F5F8EF;
+    }
+    .navbar-content {
+        transform: translatey(-10%);
+    }
+    #nav {
+        text-align: center !important;
+    }
+}
+
+/* Navbar Collapse */
+.pos-f-t {
+    position: fixed;
+    width: 100%;
+    z-index: 1030;
+}
+
+.collapse{
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+}
+
 /* Navbar Content Scrolled State */
 #navbar.scrolled .navbar-content {
     opacity: 1; /* Show content */
-    transform: translate(-50%, -10%); /* Adjust position */
+    transform: translatey(-10%); /* Adjust position */
 }
 
 /* Logo */
@@ -147,18 +229,12 @@ body {
 
 /* Restaurant Name */
 .restaurant-name {
-    opacity: 0; /* Start hidden */
     padding-top: 50px;
     transform: translateY(0px); /* Start slightly above */
     transition: opacity 0.5s ease, transform 0.5s ease;
     font-size: 1.5rem; /* Adjust font size if needed */
     color: #333; /* Adjust text color if needed */
     white-space: nowrap; /* Prevents text from wrapping */
-}
-
-#navbar.scrolled .restaurant-name {
-    opacity: 1; /* Show text after scrolling */
-    transform: translateY(0); /* Slide into place */
 }
 
 /* Navbar Links */
@@ -175,7 +251,6 @@ body {
 .menuitem {
     text-align: center;
 }
-
 
 /* Smooth transition for menu item spans */
 .menuitem span {
@@ -212,7 +287,6 @@ body {
     border-radius: 5px; /* Optional: rounded corners for hover effect */
 }
 
-
 /* Hover Effect */
 .hvr-fade:hover {
     background: rgba(0, 0, 0, 0.2); /* Background color on hover */
@@ -236,6 +310,26 @@ body {
 body {
     font-family: 'Roboto', sans-serif;
 }
+
+/* Slide-in and slide-out keyframes */
+@keyframes slideIn {
+    from {
+        background-color: transparent;
+    }
+    to {
+        background-color: rgba(255, 255, 255, 0.9);
+    }
+}
+
+@keyframes slideOut {
+    from {
+        background-color: rgba(255, 255, 255, 0.9);
+    }
+    to {
+        background-color: transparent;
+    }
+}
+
 
 
 .three-squares-section .square {
