@@ -9,6 +9,14 @@ class TableAdmin(admin.ModelAdmin):
 
 @admin.register(Booking)
 class BookingAdmin(admin.ModelAdmin):
-    list_display = ('guest_name', 'booking_date', 'booking_time', 'number_of_guests', 'table')
-    list_filter = ('booking_date', 'booking_time')
+    list_display = ('guest_name', 'booking_date', 'booking_time', 'number_of_guests', 'table', 'confirmed')
+    list_filter = ('booking_date', 'booking_time', 'confirmed')
     search_fields = ('guest_name',)
+
+    actions = ['confirm_booking']
+
+    def confirm_booking(self, request, queryset):
+        queryset.update(confirmed=True)
+        self.message_user(request, f"{queryset.count()} bookings confirmed.")
+
+    confirm_booking.short_description = "Confirm selected bookings"
