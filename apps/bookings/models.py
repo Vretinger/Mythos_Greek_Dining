@@ -24,6 +24,7 @@ class Booking(models.Model):
     number_of_guests = models.IntegerField()
     table = models.ForeignKey(Table, on_delete=models.SET_NULL, null=True, blank=True)
     special_requests = models.TextField(blank=True, null=True)
+    confirmed = models.BooleanField(default=False)
 
     def __str__(self):
         return f"{self.guest_name} - {self.booking_date} at {self.booking_time}"
