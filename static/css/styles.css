@@ -529,6 +529,39 @@ body {
     background-repeat: no-repeat; /* Prevent images from repeating */
 }
 
+.form-control {
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary {
+    border-radius: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+}
+
+.container {
+    max-width: 800px;
+    margin-top: 50px;
+}
+
+.booking-page {
+    background-image: url(../images/background-booking.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.booking-form {
+    background: rgba(255, 255, 255, 0.4); /* Optional: semi-transparent background for readability */
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.booking-title {
+    text-align: center;
+    padding-top: 50px;
+}
 
 .main-footer {
     background-color: #222; /* Dark background */

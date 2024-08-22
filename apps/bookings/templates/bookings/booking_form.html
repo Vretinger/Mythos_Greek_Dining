@@ -1,13 +1,73 @@
-<!-- templates/bookings/booking_form.html -->
 {% extends 'base_generic.html' %}
 
 {% load crispy_forms_tags %}
 
 {% block content %}
-  <h1>Book a Table</h1>
-  <form method="post" action="{% url 'booking_create' %}">
-      {% csrf_token %}
-      {{ form|crispy }}
-      <button type="submit">Book Now</button>
-  </form>
+<section class="container-fluid p-0 booking-page">
+  <div class="container py-5 mt-0">
+    <h1 class="mb-4 booking-title">Book a Table</h1>
+    <form method="post" action="/bookings/book/" class="needs-validation booking-form" novalidate="">
+      <input type="hidden" name="csrfmiddlewaretoken" value="0mZZyG9k4la9KO18PN1ah3CAcv9kXFiqIzSlnWnwlJX2wrsH0DzsmfhJOwmwVWDq">
+      <div class="row">
+        <!-- Name -->
+        <div class="col-md-6 mb-3">
+          <label for="name">Name</label>
+          <input type="text" class="form-control" id="name" name="name" placeholder="Full Name" required>
+          <div class="invalid-feedback">
+            Please enter your name.
+          </div>
+        </div>
+        <!-- Email -->
+        <div class="col-md-6 mb-3">
+          <label for="email">Email</label>
+          <input type="email" class="form-control" id="email" name="email" placeholder="Email Address" required>
+          <div class="invalid-feedback">
+            Please enter a valid email address.
+          </div>
+        </div>
+        <!-- Phone -->
+        <div class="col-md-6 mb-3">
+          <label for="phone">Phone</label>
+          <input type="tel" class="form-control" id="phone" name="phone" placeholder="Phone Number" required>
+          <div class="invalid-feedback">
+            Please enter your phone number.
+          </div>
+        </div>
+        <!-- Date -->
+        <div class="col-md-6 mb-3">
+          <label for="date">Date</label>
+          <input type="date" class="form-control" id="date" name="date" required>
+          <div class="invalid-feedback">
+            Please select a date.
+          </div>
+        </div>
+        <!-- Time -->
+        <div class="col-md-6 mb-3">
+          <label for="time">Time</label>
+          <input type="time" class="form-control" id="time" name="time" required>
+          <div class="invalid-feedback">
+            Please select a time.
+          </div>
+        </div>
+        <!-- Number of People -->
+        <div class="col-md-6 mb-3">
+          <label for="people">Number of People</label>
+          <input type="number" class="form-control" id="people" name="people" placeholder="Number of People" min="1" required>
+          <div class="invalid-feedback">
+            Please enter the number of people.
+          </div>
+        </div>
+        <!-- Special Requests -->
+        <div class="col-md-12 mb-3">
+          <label for="requests">Special Requests</label>
+          <textarea class="form-control" id="requests" name="requests" rows="3" placeholder="Any special requests?"></textarea>
+        </div>
+        <!-- Submit Button -->
+        <div class="col-md-12 text-center">
+          <button type="submit" class="btn btn-primary">Book Now</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>
 {% endblock %}
