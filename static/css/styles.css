@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,200,300,400,500,600,700|Exo:100,200,300,400,500,600,700');
+
 /* Base Styles */
 html, body {
     height: 100%;
@@ -254,16 +256,20 @@ body {
 
 /* Smooth transition for menu item spans */
 .menuitem span {
-    font-size: 15px;
-    font-weight: 400;
+    font-size: 20px;
+    font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;
-    color: #F5F8EF; /* Change to desired color */
+    color: #F5F8EF; /* Main text color */
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.6); /* Subtle shadow for better contrast */
     transition: color 0.5s ease, transform 0.5s ease;
+    padding: 5px; /* Adds space around text for better readability */
 }
 
 #navbar.scrolled .menuitem span {
-    color: #333; /* Change color when scrolled */
+    color: #333; /* Change color when scrolled */ 
+    font-weight: 300;
+    text-shadow: none;
 }
 
 #navbar:not(.scrolled) .menuitem span {
@@ -290,15 +296,6 @@ body {
 /* Hover Effect */
 .hvr-fade:hover {
     background: rgba(0, 0, 0, 0.2); /* Background color on hover */
-}
-
-/* Span Styling */
-.menuitem span {
-    font-size: 15px;
-    font-weight: 400;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: #F5F8EF; /* Text color */
 }
 
 .fixed-top {
