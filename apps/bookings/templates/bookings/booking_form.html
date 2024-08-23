@@ -6,7 +6,8 @@
 <section class="container-fluid p-0 booking-page">
   <div class="container py-5 mt-0">
     <h1 class="mb-4 form-title">Book a Table</h1>
-    <form method="post" action="/bookings/book/" class="needs-validation form-content" novalidate="">
+    <form method="post" action="{% url 'bookings:booking_create' %}" class="needs-validation form-content" novalidate="">
+      {% csrf_token %}    
       <input type="hidden" name="csrfmiddlewaretoken" value="0mZZyG9k4la9KO18PN1ah3CAcv9kXFiqIzSlnWnwlJX2wrsH0DzsmfhJOwmwVWDq">
       <div class="row">
         <!-- Name -->

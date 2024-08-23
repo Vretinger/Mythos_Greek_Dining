@@ -9,7 +9,7 @@
     <section class="hero">
         <div class="hero-text text-center">
             <h1 class="display-4">Mythos: Where Every Meal is a Mythic Experience</h1>
-            <a href="{% url 'booking_create' %}" class="btn btn-primary btn-lg">Book a Table Now</a>
+            <a href="{% url 'bookings:booking_create' %}" class="btn btn-primary btn-lg">Book a Table Now</a>
         </div>
     </section>
 {% endblock %}
@@ -22,7 +22,7 @@
             <div class="content">
                 <h2>Our Food</h2>
                 <p>Welcome to our restaurant, where we serve the finest dishes made with love and passion. Our team is dedicated to providing an exceptional dining experience with a warm and inviting atmosphere.</p>
-                <a href="#" class="btn btn-light">Explore Menu</a>
+                <a href="{% url 'menu' %}" class="btn btn-light">Explore Menu</a>
             </div>
         </div>
         <!-- Second Square -->
@@ -30,7 +30,7 @@
             <div class="content">
                 <h2>Book a Table</h2>
                 <p>Reserve a table at our restaurant for a memorable dining experience. We look forward to serving you.</p>
-                <a href="#" class="btn btn-primary">Make a Reservation</a>
+                <a href="{% url 'bookings:booking_create' %}" class="btn btn-primary">Make a Reservation</a>
             </div>
         </div>
         <!-- Third Square -->

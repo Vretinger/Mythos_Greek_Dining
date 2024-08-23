@@ -1,0 +1,16 @@
+2024-08-23 09:11:46.636 UTC [28267] LOG:  starting PostgreSQL 13.7 on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0, 64-bit
+2024-08-23 09:11:46.637 UTC [28267] LOG:  could not bind IPv6 address "::1": Address already in use
+2024-08-23 09:11:46.637 UTC [28267] HINT:  Is another postmaster already running on port 5432? If not, wait a few seconds and retry.
+2024-08-23 09:11:46.637 UTC [28267] LOG:  could not bind IPv4 address "127.0.0.1": Address already in use
+2024-08-23 09:11:46.637 UTC [28267] HINT:  Is another postmaster already running on port 5432? If not, wait a few seconds and retry.
+2024-08-23 09:11:46.637 UTC [28267] WARNING:  could not create listen socket for "localhost"
+2024-08-23 09:11:46.637 UTC [28267] FATAL:  could not create any TCP/IP sockets
+2024-08-23 09:11:46.640 UTC [28267] LOG:  database system is shut down
+2024-08-23 09:13:45.723 UTC [28555] LOG:  starting PostgreSQL 13.7 on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0, 64-bit
+2024-08-23 09:13:45.724 UTC [28555] LOG:  could not bind IPv6 address "::1": Address already in use
+2024-08-23 09:13:45.724 UTC [28555] HINT:  Is another postmaster already running on port 5432? If not, wait a few seconds and retry.
+2024-08-23 09:13:45.725 UTC [28555] LOG:  could not bind IPv4 address "127.0.0.1": Address already in use
+2024-08-23 09:13:45.725 UTC [28555] HINT:  Is another postmaster already running on port 5432? If not, wait a few seconds and retry.
+2024-08-23 09:13:45.725 UTC [28555] WARNING:  could not create listen socket for "localhost"
+2024-08-23 09:13:45.725 UTC [28555] FATAL:  could not create any TCP/IP sockets
+2024-08-23 09:13:45.728 UTC [28555] LOG:  database system is shut down

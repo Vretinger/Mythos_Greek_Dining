@@ -47,7 +47,7 @@
                                 <a href="{% url 'menu' %}" class="hvr-fade"><span>Menu</span></a>
                             </li>
                             <li class="nav-item list-inline-item menuitem">
-                                <a href="{% url 'booking_create' %}" class="hvr-fade"><span>Booking</span></a>
+                                <a href="{% url 'bookings:booking_create' %}" class="hvr-fade"><span>Booking</span></a>
                             </li>
                             <li class="nav-item list-inline-item menuitem">
                                 <a href="{% url 'contact' %}" class="hvr-fade"><span>Contact</span></a>
@@ -73,7 +73,7 @@
                                     <a href="{% url 'menu' %}" class="btn-collapse"><span>Menu</span></a>
                                 </li>
                                 <li class="nav-item p-2">
-                                    <a href="{% url 'booking_create' %}" class="btn-collapse"><span>Booking</span></a>
+                                    <a href="{% url 'bookings:booking_create' %}" class="btn-collapse"><span>Booking</span></a>
                                 </li>
                                 <li class="nav-item p-2">
                                     <a href="{% url 'contact' %}" class="btn-collapse"><span>Contact</span></a>
@@ -122,7 +122,7 @@
                             <div class="footer-content">
                                 <ul class="footer-links">
                                     <li><a href="/#about-us">About Us</a></li>
-                                    <li><a href="/contact/">Contact Us</a></li>
+                                    <li><a href="{% url 'contact' %}">Contact Us</a></li>
                                 </ul>
                             </div>
                         </div>
