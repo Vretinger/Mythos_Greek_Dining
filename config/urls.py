@@ -9,5 +9,5 @@ urlpatterns = [
     path('bookings/', include('apps.bookings.urls')),
     path('', views.home, name='home'),
     path('menu/', views.menu, name='menu'),
-    path('contact/', views.contact, name='contact'),
+    path('contact/', include('apps.contact.urls')), 
 ]

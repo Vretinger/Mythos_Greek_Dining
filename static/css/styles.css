@@ -552,15 +552,29 @@ body {
     background-size: cover;
 }
 
-.booking-form {
+.contact-us-page {
+    background-image: url(../images/contact-us.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.form-content {
     background: rgba(255, 255, 255, 0.4); /* Optional: semi-transparent background for readability */
     border-radius: 10px;
     padding: 5px;
 }
 
-.booking-title {
+.form-title {
     text-align: center;
     padding-top: 50px;
+}
+
+.contact-form-title {
+    text-align: center;
+    padding-top: 50px;
+    color: #f8f8f8;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .main-footer {

@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'apps.bookings', 
     'apps.users', 
     'apps.menu',
+    'apps.contact',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
@@ -85,10 +86,15 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'greek_dining',        # Replace with your PostgreSQL database name
+        'USER': 'postgres',        # Replace with your PostgreSQL username, usually 'postgres'
+        'PASSWORD': 'Fredrik08',    # Replace with your PostgreSQL password
+        'HOST': 'localhost',           # Or '127.0.0.1'
+        'PORT': '5433',                
     }
 }
+
 
 
 # Password validation

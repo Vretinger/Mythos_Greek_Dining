@@ -1,0 +1,31 @@
+{% extends 'base_generic.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container-fluid contact-us-page">
+    <div class="container py-5 mt-0">
+        <h1 class="mb-4 contact-form-title">Contact Us</h1>
+        <form method="post" class="form-content">
+            {% csrf_token %}
+            <div class="form-row">
+                <div class="col-md-6 mb-3">
+                    {{ form.name|as_crispy_field }}
+                </div>
+                <div class="col-md-6 mb-3">
+                    {{ form.email|as_crispy_field }}
+                </div>
+                <div class="col-md-12 mb-3">
+                    {{ form.subject|as_crispy_field }}
+                </div>
+                <div class="col-md-12 mb-3">
+                    {{ form.message|as_crispy_field }}
+                </div>
+                <div class="col-md-12 text-center">
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
