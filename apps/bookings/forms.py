@@ -1,8 +1,9 @@
 from django import forms
-from .models import Booking
 from django.core.exceptions import ValidationError
+from .models import Booking
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Field, Row, Column, Submit
+from datetime import date
 
 class BookingForm(forms.ModelForm):
     class Meta:
@@ -49,6 +50,10 @@ class BookingForm(forms.ModelForm):
         booking_time = cleaned_data.get('booking_time')
         number_of_guests = cleaned_data.get('number_of_guests')
         table = cleaned_data.get('table')
+
+        # Check if the booking date is in the past
+        if booking_date and booking_date < date.today():
+            raise ValidationError('The booking date cannot be in the past.')
 
         if table:
             if number_of_guests > table.capacity:

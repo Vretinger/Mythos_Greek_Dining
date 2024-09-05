@@ -4,71 +4,94 @@
 
 {% block content %}
 <section class="container-fluid p-0 booking-page">
-  <div class="container py-5 mt-0">
-    <h1 class="mb-4 form-title">Book a Table</h1>
-    <form method="post" action="{% url 'bookings:booking_create' %}" class="needs-validation form-content" novalidate="">
-      {% csrf_token %}    
-      <input type="hidden" name="csrfmiddlewaretoken" value="0mZZyG9k4la9KO18PN1ah3CAcv9kXFiqIzSlnWnwlJX2wrsH0DzsmfhJOwmwVWDq">
-      <div class="row">
-        <!-- Name -->
-        <div class="col-md-6 mb-3">
-          <label for="name">Name</label>
-          <input type="text" class="form-control" id="name" name="name" placeholder="Full Name" required>
-          <div class="invalid-feedback">
-            Please enter your name.
+    <div class="container py-5 mt-0">
+      <h1 class="mb-4 form-title">Book a Table</h1>
+      <form method="post" action="{% url 'bookings:booking_create' %}" class="needs-validation form-content" novalidate="">
+        {% csrf_token %}
+        
+        <!-- Displaying error messages for the form -->
+        {% if form.errors %}
+          <div class="alert alert-danger">
+            <ul>
+              {% for field, errors in form.errors.items %}
+                {% for error in errors %}
+                  <li>{{ error }}</li>
+                {% endfor %}
+              {% endfor %}
+            </ul>
+          </div>
+        {% endif %}
+  
+        <div class="row">
+          <!-- Name -->
+          <div class="col-md-6 mb-3">
+            <label for="guest_name">Name</label>
+            <input type="text" class="form-control {% if form.guest_name.errors %}is-invalid{% endif %}" id="guest_name" name="guest_name" placeholder="Full Name" value="{{ form.guest_name.value|default_if_none:'' }}">
+            {% for error in form.guest_name.errors %}
+              <div class="invalid-feedback">{{ error }}</div>
+            {% endfor %}
+          </div>
+          
+          <!-- Email -->
+          <div class="col-md-6 mb-3">
+            <label for="guest_email">Email</label>
+            <input type="email" class="form-control {% if form.guest_email.errors %}is-invalid{% endif %}" id="guest_email" name="guest_email" placeholder="Email Address" value="{{ form.guest_email.value|default_if_none:'' }}">
+            {% for error in form.guest_email.errors %}
+              <div class="invalid-feedback">{{ error }}</div>
+            {% endfor %}
+          </div>
+  
+          <!-- Phone -->
+          <div class="col-md-6 mb-3">
+            <label for="phone">Phone</label>
+            <input type="tel" class="form-control {% if form.phone.errors %}is-invalid{% endif %}" id="phone" name="phone" placeholder="Phone Number" value="{{ form.phone.value|default_if_none:'' }}">
+            {% for error in form.phone.errors %}
+              <div class="invalid-feedback">{{ error }}</div>
+            {% endfor %}
+          </div>
+  
+          <!-- Date -->
+          <div class="col-md-6 mb-3">
+            <label for="booking_date">Date</label>
+            <input type="date" class="form-control {% if form.booking_date.errors %}is-invalid{% endif %}" id="booking_date" name="booking_date" value="{{ form.booking_date.value|default_if_none:'' }}">
+            {% for error in form.booking_date.errors %}
+              <div class="invalid-feedback">{{ error }}</div>
+            {% endfor %}
+          </div>
+  
+          <!-- Time -->
+          <div class="col-md-6 mb-3">
+            <label for="booking_time">Time</label>
+            <input type="time" class="form-control {% if form.booking_time.errors %}is-invalid{% endif %}" id="booking_time" name="booking_time" value="{{ form.booking_time.value|default_if_none:'' }}">
+            {% for error in form.booking_time.errors %}
+              <div class="invalid-feedback">{{ error }}</div>
+            {% endfor %}
+          </div>
+  
+          <!-- Number of People -->
+          <div class="col-md-6 mb-3">
+            <label for="number_of_guests">Number of People</label>
+            <input type="number" class="form-control {% if form.number_of_guests.errors %}is-invalid{% endif %}" id="number_of_guests" name="number_of_guests" placeholder="Number of People" min="1" value="{{ form.number_of_guests.value|default_if_none:'' }}">
+            {% for error in form.number_of_guests.errors %}
+              <div class="invalid-feedback">{{ error }}</div>
+            {% endfor %}
+          </div>
+  
+          <!-- Special Requests -->
+          <div class="col-md-12 mb-3">
+            <label for="special_requests">Special Requests</label>
+            <textarea class="form-control {% if form.special_requests.errors %}is-invalid{% endif %}" id="special_requests" name="special_requests" rows="3" placeholder="Any special requests?">{{ form.special_requests.value }}</textarea>
+            {% for error in form.special_requests.errors %}
+              <div class="invalid-feedback">{{ error }}</div>
+            {% endfor %}
+          </div>
+  
+          <!-- Submit Button -->
+          <div class="col-md-12 text-center">
+            <button type="submit" class="btn btn-primary">Book Now</button>
           </div>
         </div>
-        <!-- Email -->
-        <div class="col-md-6 mb-3">
-          <label for="email">Email</label>
-          <input type="email" class="form-control" id="email" name="email" placeholder="Email Address" required>
-          <div class="invalid-feedback">
-            Please enter a valid email address.
-          </div>
-        </div>
-        <!-- Phone -->
-        <div class="col-md-6 mb-3">
-          <label for="phone">Phone</label>
-          <input type="tel" class="form-control" id="phone" name="phone" placeholder="Phone Number" required>
-          <div class="invalid-feedback">
-            Please enter your phone number.
-          </div>
-        </div>
-        <!-- Date -->
-        <div class="col-md-6 mb-3">
-          <label for="date">Date</label>
-          <input type="date" class="form-control" id="date" name="date" required>
-          <div class="invalid-feedback">
-            Please select a date.
-          </div>
-        </div>
-        <!-- Time -->
-        <div class="col-md-6 mb-3">
-          <label for="time">Time</label>
-          <input type="time" class="form-control" id="time" name="time" required>
-          <div class="invalid-feedback">
-            Please select a time.
-          </div>
-        </div>
-        <!-- Number of People -->
-        <div class="col-md-6 mb-3">
-          <label for="people">Number of People</label>
-          <input type="number" class="form-control" id="people" name="people" placeholder="Number of People" min="1" required>
-          <div class="invalid-feedback">
-            Please enter the number of people.
-          </div>
-        </div>
-        <!-- Special Requests -->
-        <div class="col-md-12 mb-3">
-          <label for="requests">Special Requests</label>
-          <textarea class="form-control" id="requests" name="requests" rows="3" placeholder="Any special requests?"></textarea>
-        </div>
-        <!-- Submit Button -->
-        <div class="col-md-12 text-center">
-          <button type="submit" class="btn btn-primary">Book Now</button>
-        </div>
-      </div>
-    </form>
-  </div>
-</section>
+      </form>
+    </div>
+</section>  
 {% endblock %}
