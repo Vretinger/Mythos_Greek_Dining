@@ -1,3 +1,5 @@
+from datetime import datetime, timedelta
+from django.utils import timezone
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .forms import BookingForm
@@ -9,38 +11,41 @@ def booking_create(request):
         if form.is_valid():
             booking = form.save(commit=False)
 
-            # Debug statement: Print the form data being processed
-            print(f"Form data: {form.cleaned_data}")
+            # Combine booking date and time
+            booking_datetime = timezone.make_aware(datetime.combine(booking.booking_date, booking.booking_time))
+            
+            # Check if the booking date and time is in the past
+            if booking_datetime < timezone.now():
+                messages.error(request, 'The selected date and time have already passed. Please choose a future date and time.')
+                return render(request, 'bookings/booking_form.html', {'form': form})
 
             # Automatically assign a table if not already assigned
             if not booking.table:
-                potential_tables = Table.objects.filter(capacity__gte=booking.number_of_guests, available=True)
-                print(f"Potential tables for {booking.number_of_guests} guests: {[table.table_number for table in potential_tables]}")  # Debug statement
+                potential_tables = Table.objects.filter(
+                    capacity__gte=booking.number_of_guests,
+                    available=True
+                )
 
                 available_tables = []
-
-                # Check each potential table for conflicts
                 for table in potential_tables:
-                    conflicting_bookings = Booking.objects.filter(
+                    buffer_before = table.buffer_before
+                    buffer_after = table.buffer_after
+
+                    # Check for availability with buffer times
+                    if not Booking.objects.filter(
                         table=table,
                         booking_date=booking.booking_date,
-                        booking_time=booking.booking_time
-                    )
-
-                    # Debug information for each table checked
-                    if conflicting_bookings.exists():
-                        print(f"Table {table.table_number} is not available due to conflicting bookings.")  # Debug statement
-                    else:
-                        print(f"Table {table.table_number} is available.")  # Debug statement
+                        booking_time__range=(
+                            (booking_datetime - buffer_before).time(),
+                            (booking_datetime + buffer_after).time()
+                        )
+                    ).exists():
                         available_tables.append(table)
-
+                
                 if available_tables:
                     booking.table = available_tables[0]
-                    print(f"Assigned table {booking.table.table_number} to the booking.")  # Debug statement
                 else:
-                    # Error message and debug output if no tables are available
-                    print("No tables available for the selected date and time.")  # Debug statement
-                    messages.error(request, 'Selected table is already booked for this date and time.')
+                    messages.error(request, f"No available tables for {booking.number_of_guests} people at the selected date and time.")
                     return render(request, 'bookings/booking_form.html', {'form': form})
 
             booking.save()

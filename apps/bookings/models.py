@@ -7,6 +7,8 @@ class Table(models.Model):
     table_number = models.IntegerField(unique=True)
     capacity = models.IntegerField()
     available = models.BooleanField(default=True)
+    buffer_before = models.DurationField(default='01:00:00')  # 1 hour buffer before booking
+    buffer_after = models.DurationField(default='01:00:00')   # 1 hour buffer after booking
 
     def __str__(self):
         return f"Table {self.table_number} - {self.capacity} seats"
