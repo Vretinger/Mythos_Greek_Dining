@@ -1,28 +1,51 @@
 {% extends 'base_generic.html' %}
+<!-- Inherits the base template for consistent layout -->
 
 {% load crispy_forms_tags %}
+<!-- Loads crispy forms tags for form rendering with Crispy Forms -->
 
 {% block content %}
+<!-- Begin the content block for this template -->
 <div class="container-fluid contact-us-page">
+    <!-- Contact Us page container -->
     <div class="container py-5 mt-0">
-        <h1 class="mb-4 contact-form-title">Contact Us</h1>
+        <!-- Form title and spacing -->
+        <h1 class="mb-4 form-title">Contact Us</h1>
+
+        <!-- Begin contact form -->
         <form method="post" class="form-content">
             {% csrf_token %}
+            <!-- Include CSRF token for form security -->
+            
             <div class="form-row">
+                <!-- First Name field -->
                 <div class="col-md-6 mb-3">
                     {{ form.name|as_crispy_field }}
+                    <!-- Renders the name field using Crispy Forms for better styling -->
                 </div>
+                
+                <!-- Email field -->
                 <div class="col-md-6 mb-3">
                     {{ form.email|as_crispy_field }}
+                    <!-- Renders the email field using Crispy Forms for better styling -->
                 </div>
+
+                <!-- Subject field -->
                 <div class="col-md-12 mb-3">
                     {{ form.subject|as_crispy_field }}
+                    <!-- Renders the subject field using Crispy Forms for better styling -->
                 </div>
+
+                <!-- Message field -->
                 <div class="col-md-12 mb-3">
                     {{ form.message|as_crispy_field }}
+                    <!-- Renders the message text area using Crispy Forms -->
                 </div>
+
+                <!-- Submit button -->
                 <div class="col-md-12 text-center">
                     <button type="submit" class="btn btn-primary">Send Message</button>
+                    <!-- Submit button for sending the message -->
                 </div>
             </div>
         </form>

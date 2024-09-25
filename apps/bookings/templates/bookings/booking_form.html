@@ -1,26 +1,18 @@
 {% extends 'base_generic.html' %}
+<!-- Inherits the base template for consistent layout across pages -->
 
 {% load crispy_forms_tags %}
+<!-- Loads crispy forms tags for rendering Django forms with Bootstrap styling -->
 
 {% block content %}
+<!-- Begin the content block for this template -->
 <section class="container-fluid p-0 booking-page">
     <div class="container py-5 mt-0">
       <h1 class="mb-4 form-title">Book a Table</h1>
+      <!-- Start booking form, submitting data via POST to booking_create view -->
       <form method="post" action="{% url 'bookings:booking_create' %}" class="needs-validation form-content" novalidate="">
         {% csrf_token %}
-        
-        <!-- Displaying error messages for the form -->
-        {% if form.errors %}
-        <div class="alert alert-danger">
-          <ul>
-            {% for field, errors in form.errors.items %}
-              {% for error in errors %}
-                <li>{{ error }}</li>
-              {% endfor %}
-            {% endfor %}
-          </ul>
-        </div>
-        {% endif %}
+        <!-- CSRF token for security -->
 
         {% if messages %}
             <ul class="messages">
@@ -28,73 +20,81 @@
                     <li class="{{ message.tags }}">{{ message }}</li>
                 {% endfor %}
             </ul>
+        <!-- Displays messages (e.g., success, errors) returned from the view -->
         {% endif %}
   
         <div class="row">
-          <!-- Name -->
+          <!-- Name input field -->
           <div class="col-md-6 mb-3">
             <label for="guest_name">Name</label>
             <input type="text" class="form-control {% if form.guest_name.errors %}is-invalid{% endif %}" id="guest_name" name="guest_name" placeholder="Full Name" value="{{ form.guest_name.value|default_if_none:'' }}">
+            <!-- Error messages for name field -->
             {% for error in form.guest_name.errors %}
               <div class="invalid-feedback">{{ error }}</div>
             {% endfor %}
           </div>
           
-          <!-- Email -->
+          <!-- Email input field -->
           <div class="col-md-6 mb-3">
             <label for="guest_email">Email</label>
             <input type="email" class="form-control {% if form.guest_email.errors %}is-invalid{% endif %}" id="guest_email" name="guest_email" placeholder="Email Address" value="{{ form.guest_email.value|default_if_none:'' }}">
+            <!-- Error messages for email field -->
             {% for error in form.guest_email.errors %}
               <div class="invalid-feedback">{{ error }}</div>
             {% endfor %}
           </div>
   
-          <!-- Phone -->
+          <!-- Phone input field -->
           <div class="col-md-6 mb-3">
             <label for="phone">Phone</label>
             <input type="tel" class="form-control {% if form.phone.errors %}is-invalid{% endif %}" id="phone" name="phone" placeholder="Phone Number" value="{{ form.phone.value|default_if_none:'' }}">
+            <!-- Error messages for phone field -->
             {% for error in form.phone.errors %}
               <div class="invalid-feedback">{{ error }}</div>
             {% endfor %}
           </div>
   
-          <!-- Date -->
+          <!-- Booking date input field -->
           <div class="col-md-6 mb-3">
             <label for="booking_date">Date</label>
             <input type="date" class="form-control {% if form.booking_date.errors %}is-invalid{% endif %}" id="booking_date" name="booking_date" value="{{ form.booking_date.value|default_if_none:'' }}">
+            <!-- Error messages for booking date -->
             {% for error in form.booking_date.errors %}
               <div class="invalid-feedback">{{ error }}</div>
             {% endfor %}
           </div>
   
-          <!-- Time -->
+          <!-- Booking time input field -->
           <div class="col-md-6 mb-3">
             <label for="booking_time">Time</label>
             <input type="time" class="form-control {% if form.booking_time.errors %}is-invalid{% endif %}" id="booking_time" name="booking_time" value="{{ form.booking_time.value|default_if_none:'' }}">
+            <!-- Error messages for booking time -->
             {% for error in form.booking_time.errors %}
               <div class="invalid-feedback">{{ error }}</div>
             {% endfor %}
           </div>
   
-          <!-- Number of People -->
+          <!-- Number of guests input field -->
           <div class="col-md-6 mb-3">
             <label for="number_of_guests">Number of People</label>
             <input type="number" class="form-control {% if form.number_of_guests.errors %}is-invalid{% endif %}" id="number_of_guests" name="number_of_guests" placeholder="Number of People" min="1" value="{{ form.number_of_guests.value|default_if_none:'' }}">
+            <!-- Error messages for number of guests -->
             {% for error in form.number_of_guests.errors %}
               <div class="invalid-feedback">{{ error }}</div>
             {% endfor %}
           </div>
   
-          <!-- Special Requests -->
+          <!-- Special requests text area -->
           <div class="col-md-12 mb-3">
             <label for="special_requests">Special Requests</label>
             <textarea class="form-control {% if form.special_requests.errors %}is-invalid{% endif %}" id="special_requests" name="special_requests" rows="3" placeholder="Any special requests?">{{ form.special_requests.value }}</textarea>
+            <!-- Error messages for special requests -->
             {% for error in form.special_requests.errors %}
               <div class="invalid-feedback">{{ error }}</div>
             {% endfor %}
           </div>
   
-          <!-- Submit Button -->
+          <!-- Submit button to submit the form -->
           <div class="col-md-12 text-center">
             <button type="submit" class="btn btn-primary">Book Now</button>
           </div>

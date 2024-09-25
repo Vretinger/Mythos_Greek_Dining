@@ -1,10 +1,13 @@
 {% extends 'base_generic.html' %}
+<!-- Inherits the base template for consistent layout and styles -->
 
 {% block title %}Menu - Mythos Greek Dining{% endblock %}
+<!-- Sets the title of the page to "Menu - Mythos Greek Dining" -->
 
 {% block content %}
     <!-- Banner Section -->
 <section id="menu-banner" class="banner-section d-flex align-items-center justify-content-center text-center text-light">
+    <!-- Menu banner with title and subtitle -->
     <div class="banner-content">
         <h1 class="banner-title display-4 mb-2">Our Menu</h1>
         <p class="banner-subtitle lead mb-0">Experience the Authentic Flavors of Greece</p>
@@ -13,6 +16,7 @@
 
     <!-- Menu Section -->
     <section id="mythos-menu" class="section">
+        <!-- Main container for the menu items -->
         <div class="container-fluid p-0">
             <div class="row">
                 <div class="col-md-3 d-none d-md-block falling-ingridients-left"></div>
@@ -20,11 +24,13 @@
                     <!-- Appetizers Section -->
                     <div class="menu-section mb-4">
                         <h3 class="text-center text-uppercase mb-4">Appetizers</h3>
+                        <!-- Divider with star and lines -->
                         <div class="d-flex justify-content-center mb-4">
                             <div class="line line--left border-top border-dark me-3" style="flex: 1;"></div>
                             <div class="star">-</div>
                             <div class="line line--right border-top border-dark ms-3" style="flex: 1;"></div>
                         </div>
+                        <!-- List of appetizer menu items -->
                         <ul class="list-unstyled">
                             <!-- Sample Menu Item -->
                             <li class="mb-3">
@@ -55,11 +61,13 @@
                     <!-- Mains Section -->
                     <div class="menu-section mb-4">
                         <h3 class="text-center text-uppercase mb-4">Mains</h3>
+                        <!-- Divider with star and lines -->
                         <div class="d-flex justify-content-center mb-4">
                             <div class="line line--left border-top border-dark me-3" style="flex: 1;"></div>
                             <div class="star">-</div>
                             <div class="line line--right border-top border-dark ms-3" style="flex: 1;"></div>
                         </div>
+                        <!-- List of main course menu items -->
                         <ul class="list-unstyled">
                             <!-- Sample Menu Item -->
                             <li class="mb-3">
@@ -90,11 +98,13 @@
                     <!-- Desserts Section -->
                     <div class="menu-section">
                         <h3 class="text-center text-uppercase mb-4">Desserts</h3>
+                        <!-- Divider with star and lines -->
                         <div class="d-flex justify-content-center mb-4">
                             <div class="line line--left border-top border-dark me-3" style="flex: 1;"></div>
                             <div class="star">-</div>
                             <div class="line line--right border-top border-dark ms-3" style="flex: 1;"></div>
                         </div>
+                        <!-- List of dessert menu items -->
                         <ul class="list-unstyled">
                             <!-- Sample Menu Item -->
                             <li class="mb-3">
@@ -122,6 +132,7 @@
                         </ul>
                     </div>
                 </div>
+                <!-- Decorative elements on the left and right for larger screens -->
                 <div class="col-md-3 d-none d-md-block falling-ingridients-right"></div>
             </div>
         </div>

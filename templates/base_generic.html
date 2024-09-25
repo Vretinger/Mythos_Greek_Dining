@@ -5,87 +5,93 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Link to Bootstrap CSS for styling -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" type="text/css" />
+    <!-- Link to Font Awesome for icons -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css" />
+    <!-- Link to Hover.css for hover effects -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.1.1/css/hover-min.css" type="text/css" />
+    <!-- Link to custom styles -->
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 
+    <!-- Link to jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!-- Link to custom JavaScript for GitHub information -->
     <script type="text/javascript" src="{% static 'js/github-information.js' %}"></script>
     <title>{% block title %}Mythos Greek Dining{% endblock %}</title>
 </head>
 <body>
 
     <header>
-            <div class="container-fluid">
-                <div id="navbar" class="row justify-content-between navbar">
-                    <!-- Background Navbar -->
-                    <div class="bg-navbar"></div>
-                    <!-- Logo and Restaurant Name -->
-                    <div class="d-none d-md-block align-items-center">
-                        <div class="navbar-content">
-                            <a href="{% url 'home' %}">
-                                <span class="restaurant-name" id="restaurant-name">Mythos Greek Dining</span>
-                                <img id="logo-image" src="{% static 'images/logo.png' %}" class="logo" alt="Logo">
-                            </a>
-                        </div>
+        <div class="container-fluid">
+            <div id="navbar" class="row justify-content-between navbar">
+                <!-- Background Navbar -->
+                <div class="bg-navbar"></div>
+                <!-- Logo and Restaurant Name for larger screens -->
+                <div class="d-none d-md-block align-items-center">
+                    <div class="navbar-content">
+                        <a href="{% url 'home' %}">
+                            <span class="restaurant-name" id="restaurant-name">Mythos Greek Dining</span>
+                            <img id="logo-image" src="{% static 'images/logo.png' %}" class="logo" alt="Logo">
+                        </a>
                     </div>
-                    <div class="d-block d-md-none">
-                        <div class="navbar-content">
-                            <a href="{% url 'home' %}">
-                                <span class="restaurant-name" id="restaurant-name">Mythos Greek Dining</span>
-                            </a>
-                        </div>
+                </div>
+                <!-- Logo and Restaurant Name for smaller screens -->
+                <div class="d-block d-md-none">
+                    <div class="navbar-content">
+                        <a href="{% url 'home' %}">
+                            <span class="restaurant-name" id="restaurant-name">Mythos Greek Dining</span>
+                        </a>
                     </div>
-                    <!-- Navbar links for larger screens -->
-                    <nav class="d-none d-md-block">
-                        <ul id="nav" class="nav justify-content-end">
-                            <li class="nav-item list-inline-item menuitem">
-                                <a href="{% url 'home' %}" class="hvr-fade"><span>Home</span></a>
+                </div>
+                <!-- Navbar links for larger screens -->
+                <nav class="d-none d-md-block">
+                    <ul id="nav" class="nav justify-content-end">
+                        <li class="nav-item list-inline-item menuitem">
+                            <a href="{% url 'home' %}" class="hvr-fade"><span>Home</span></a>
+                        </li>
+                        <li class="nav-item list-inline-item menuitem">
+                            <a href="{% url 'menu' %}" class="hvr-fade"><span>Menu</span></a>
+                        </li>
+                        <li class="nav-item list-inline-item menuitem">
+                            <a href="{% url 'bookings:booking_create' %}" class="hvr-fade"><span>Booking</span></a>
+                        </li>
+                        <li class="nav-item list-inline-item menuitem">
+                            <a href="{% url 'contact' %}" class="hvr-fade"><span>Contact</span></a>
+                        </li>
+                    </ul>
+                </nav>              
+            </div>
+            <!-- Collapsible Navbar for small screens -->
+            <div class="d-block d-md-none pos-f-t drop-down">
+                <nav class="navbar navbar-dark">
+                    <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="toggler-icon closed">☰</span>
+                        <span class="toggler-icon open">✖</span>
+                    </button>
+                </nav>
+                <div class="collapse p-0" id="navbarToggleExternalContent">
+                    <div class="bg-drop-down p-2">
+                        <ul id="nav" class="nav flex-column justify-content-center">
+                            <li class="nav-item p-2">
+                                <a href="{% url 'home' %}" class="btn-collapse"><span>Home</span></a>
                             </li>
-                            <li class="nav-item list-inline-item menuitem">
-                                <a href="{% url 'menu' %}" class="hvr-fade"><span>Menu</span></a>
+                            <li class="nav-item p-2">
+                                <a href="{% url 'menu' %}" class="btn-collapse"><span>Menu</span></a>
                             </li>
-                            <li class="nav-item list-inline-item menuitem">
-                                <a href="{% url 'bookings:booking_create' %}" class="hvr-fade"><span>Booking</span></a>
+                            <li class="nav-item p-2">
+                                <a href="{% url 'bookings:booking_create' %}" class="btn-collapse"><span>Booking</span></a>
                             </li>
-                            <li class="nav-item list-inline-item menuitem">
-                                <a href="{% url 'contact' %}" class="hvr-fade"><span>Contact</span></a>
+                            <li class="nav-item p-2">
+                                <a href="{% url 'contact' %}" class="btn-collapse"><span>Contact</span></a>
                             </li>
                         </ul>
-                    </nav>              
-                </div>
-                <!-- Collapsible Navbar for small screens -->
-                <div class="d-block d-md-none pos-f-t drop-down">
-                    <nav class="navbar navbar-dark">
-                        <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="toggler-icon closed">☰</span>
-                            <span class="toggler-icon open">✖</span>
-                        </button>
-                    </nav>
-                    <div class="collapse p-0" id="navbarToggleExternalContent">
-                        <div class="bg-drop-down p-2">
-                            <ul id="nav" class="nav flex-column justify-content-center">
-                                <li class="nav-item p-2">
-                                    <a href="{% url 'home' %}" class="btn-collapse"><span>Home</span></a>
-                                </li>
-                                <li class="nav-item p-2">
-                                    <a href="{% url 'menu' %}" class="btn-collapse"><span>Menu</span></a>
-                                </li>
-                                <li class="nav-item p-2">
-                                    <a href="{% url 'bookings:booking_create' %}" class="btn-collapse"><span>Booking</span></a>
-                                </li>
-                                <li class="nav-item p-2">
-                                    <a href="{% url 'contact' %}" class="btn-collapse"><span>Contact</span></a>
-                                </li>
-                            </ul>
-                        </div>
                     </div>
-                </div>      
-            </div>
+                </div>
+            </div>      
+        </div>
     </header>
     
-
     <main>
         {% block hero %}
         {% endblock %}
@@ -98,7 +104,7 @@
         <section class="footer-content">
             <div class="container">
                 <div class="row">
-                    <!-- Company Information -->
+                    <!-- Company Information Section -->
                     <div class="col-md-8">
                         <div class="footer-column">
                             <div class="footer-title">
@@ -113,7 +119,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- About Us -->
+                    <!-- About Us Section -->
                     <div class="col-md-2 col-sm-4 col-xs-6">
                         <div class="footer-column">
                             <div class="footer-title">
@@ -127,7 +133,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Social Media and Partners -->
+                    <!-- Social Media and Partners Section -->
                     <div class="col-md-2 col-sm-4">
                         <div class="footer-column">
                             <div class="footer-content">
@@ -163,9 +169,9 @@
         </section>
     </footer>
     
-
-    <!-- Add JS -->
+    <!-- Add JS for Bootstrap -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.bundle.min.js"></script>
+    <!-- Link to custom JavaScript file -->
     <script src="{% static 'js/script.js' %}"></script>
 </body>
 </html>

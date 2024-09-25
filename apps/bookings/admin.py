@@ -15,5 +15,3 @@ class BookingAdmin(admin.ModelAdmin):
     list_filter = ('booking_date', 'booking_time', 'confirmed')
     search_fields = ('guest_name',)
     
-    # Remove the actions as we no longer need to manually confirm bookings
-    actions = []

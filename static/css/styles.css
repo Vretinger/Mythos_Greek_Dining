@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:100,200,300,400,500,600,700|Exo:100,200,300,400,500,600,700');
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,200,300,400,500,600,700|Exo:100,200,300,400,500,600,700');
 
 /* Base Styles */
 html, body {
@@ -10,26 +11,30 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
+.error {
+    font-size: 18px;
+}
+
 /* Hero Section */
 .hero {
-    position: relative; /* Ensure hero section's positioning is relative to its container */
+    position: relative;
     width: 100%;
-    height: 100vh; /* Full viewport height */
+    height: 100vh;
     background-image: url("../images/hero-image.jpg");
-    background-size: cover; /* Ensure the image covers the entire section */
-    background-position: center; /* Center the image */
+    background-size: cover;
+    background-position: center;
     background-repeat: no-repeat;
     display: flex;
-    align-items: center; /* Center content vertically */
-    justify-content: center; /* Center content horizontally */
-    color: #fff; /* White text for contrast */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Optional text shadow */
-    z-index: 1; /* Ensure hero section is behind the navbar */
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    z-index: 1;
 }
 
 .hero-text {
     position: relative;
-    z-index: 1; /* Ensure text is above the background image */
+    z-index: 1;
     padding: 20px;
 }
 
@@ -53,14 +58,14 @@ body {
     }
     to {
         transform: translateY(0);
-        background-color: #F5F8EF; /* Desired background color */
+        background-color: #F5F8EF;
     }
 }
 
 @keyframes slideOut {
     from {
         transform: translateY(0);
-        background-color: #F5F8EF; /* Desired background color */
+        background-color: #F5F8EF;
     }
     to {
         transform: translateY(-100%);
@@ -71,60 +76,56 @@ body {
 /* Navbar Styles */
 #navbar {
     position: fixed;
-    top: 0; /* Stick to the top of the viewport */
+    top: 0;
     width: 100%;
-    height: 150px; /* Default height */
+    height: 150px;
     transition: height 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
-    overflow: hidden; /* Hide overflow from sliding effect */
-    z-index: 10; /* Ensure navbar content is on top */
-    display: flex; /* Use flexbox for layout */
-    align-items: center; /* Center content vertically */
-    justify-content: center; /* Center content horizontally */
+    overflow: hidden;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-/* Navbar Placeholder for Smooth Transition */
 #navbar-placeholder {
-    height: 150px; /* Same as default height of navbar */
+    height: 150px;
     width: 100%;
 }
 
-/* Navbar Fixed State */
 #navbar.fixed {
-    height: 70px; /* Reduced height when scrolled */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Optional shadow */
+    height: 70px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-/* Background Navbar Animation */
 .bg-navbar {
-    position: absolute; /* Position it relative to the navbar */
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: transparent; /* Initial background color */
+    background-color: transparent;
     transition: background-color 0.3s ease;
-    z-index: -1; /* Ensure it stays behind other content */
+    z-index: -1;
 }
 
 #navbar.scrolled .bg-navbar {
-    animation: slideIn 0.5s forwards; /* Slide in with background color */
+    animation: slideIn 0.5s forwards;
 }
 
 #navbar:not(.scrolled) .bg-navbar {
-    animation: slideOut 0.5s forwards; /* Slide out with background color */
+    animation: slideOut 0.5s forwards;
 }
 
-/* Navbar Content Initial State */
 .navbar-content {
-    flex-direction: column; /* Stack items vertically */
-    align-items: center; /* Center items horizontally */
-    justify-content: center; /* Center items vertically */
-    position: absolute; /* Absolute positioning for overlay effect */
-    transform: translatey(-60%); /* Initial positioning */
-    text-align: center; /* Center text */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    transform: translatey(-60%);
+    text-align: center;
     z-index: 10;
-    opacity: 1; /* Initially hidden */
-    transition: opacity 0.5s ease, transform 0.5s ease; /* Smooth transition for opacity and transform */
+    opacity: 1;
+    transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
 .btn-collapse {
@@ -171,7 +172,7 @@ body {
     border: 2px solid transparent;
 }
 
-.navbar-dark .navbar-toggler{
+.navbar-dark .navbar-toggler {
     border-color: rgba(0, 0, 0, 0.664);
 }
 
@@ -180,10 +181,10 @@ body {
         height: 100px;
         transform: translateY(-30px);
     }
-    #navbar:not(.scrolled) .bg-navbar  {
+    #navbar:not(.scrolled) .bg-navbar {
         animation: none;
     }
-    #navbar.scrolled .bg-navbar  {
+    #navbar.scrolled .bg-navbar {
         animation: none;
     }
     .bg-navbar {
@@ -204,7 +205,7 @@ body {
     z-index: 1030;
 }
 
-.collapse{
+.collapse {
     position: absolute;
     top: 100%;
     left: 0;
@@ -214,29 +215,29 @@ body {
 
 /* Navbar Content Scrolled State */
 #navbar.scrolled .navbar-content {
-    opacity: 1; /* Show content */
-    transform: translatey(-10%); /* Adjust position */
+    opacity: 1;
+    transform: translatey(-10%);
 }
 
 /* Logo */
 .logo {
     background: url("../images/logo.png") no-repeat;
-    background-size: contain; /* Ensure the image fits within the element */
-    height: 150px; /* Adjust the height as needed */
-    width: 150px; /* Adjust the width as needed */
-    display: block; /* Ensure it's a block element */
-    transition: opacity 0.2s ease; /* Transition opacity */
-    z-index: 1; /* Ensure the logo is above the background */
+    background-size: contain;
+    height: 150px;
+    width: 150px;
+    display: block;
+    transition: opacity 0.2s ease;
+    z-index: 1;
 }
 
 /* Restaurant Name */
 .restaurant-name {
     padding-top: 50px;
-    transform: translateY(0px); /* Start slightly above */
+    transform: translateY(0px);
     transition: opacity 0.5s ease, transform 0.5s ease;
-    font-size: 1.5rem; /* Adjust font size if needed */
-    color: #333; /* Adjust text color if needed */
-    white-space: nowrap; /* Prevents text from wrapping */
+    font-size: 1.5rem;
+    color: #333;
+    white-space: nowrap;
 }
 
 /* Navbar Links */
@@ -247,402 +248,402 @@ body {
 }
 
 .menucontainer {
-    font-size: 0; /* Reset font size to prevent spacing issues */
+    font-size: 0;
 }
 
 .menuitem {
     text-align: center;
 }
 
-/* Smooth transition for menu item spans */
 .menuitem span {
     font-size: 20px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;
-    color: #F5F8EF; /* Main text color */
-    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.6); /* Subtle shadow for better contrast */
+    color: #F5F8EF;
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.6);
     transition: color 0.5s ease, transform 0.5s ease;
-    padding: 5px; /* Adds space around text for better readability */
+    padding: 5px;
 }
 
-#navbar.scrolled .menuitem span {
-    color: #333; /* Change color when scrolled */ 
-    font-weight: 300;
-    text-shadow: none;
+.menuitem:hover span {
+    transform: translateY(-4px);
 }
 
-#navbar:not(.scrolled) .menuitem span {
-    transform: translateY(-10px);
+@media (max-width: 768px) {
+    .menuitem {
+        display: block;
+    }
+    .menuitem span {
+        display: block;
+    }
 }
-
-/* Navbar Item */
-.menuitem {
-    padding: 0; /* Remove padding to prevent full height */
-    margin: 0 10px; /* Adjust margin for spacing between items */
-}
-
-/* Link Styling */
-.menuitem a {
-    display: inline-block; /* Make the link's dimensions match the text */
-    padding: 10px 15px; /* Add padding around text for hover area */
-    line-height: normal; /* Ensure line height doesn’t stretch the height */
-    height: auto; /* Allow the link to size according to its content */
-    text-decoration: none; /* Remove underline from links */
-    transition: background 0.3s ease; /* Smooth transition for background color */
-    border-radius: 5px; /* Optional: rounded corners for hover effect */
-}
-
-/* Hover Effect */
+/* Hover Effect for buttons */
 .hvr-fade:hover {
     background: rgba(0, 0, 0, 0.2); /* Background color on hover */
 }
 
+/* Fixed Positioning for Certain Elements */
 .fixed-top {
-    left: 250px;
-    top: 20px;
+    left: 250px; /* Horizontal position */
+    top: 20px; /* Vertical position */
 }
 
-/* Basic Styles */
+/* Basic Styles for Body */
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Roboto', sans-serif; /* Default font */
 }
 
-/* Slide-in and slide-out keyframes */
+/* Slide-in and slide-out keyframes for animations */
 @keyframes slideIn {
     from {
-        background-color: transparent;
+        background-color: transparent; /* Start transparent */
     }
     to {
-        background-color: rgba(255, 255, 255, 0.9);
+        background-color: rgba(255, 255, 255, 0.9); /* End with a white background */
     }
 }
 
 @keyframes slideOut {
     from {
-        background-color: rgba(255, 255, 255, 0.9);
+        background-color: rgba(255, 255, 255, 0.9); /* Start with a white background */
     }
     to {
-        background-color: transparent;
+        background-color: transparent; /* End transparent */
     }
 }
 
-
-
+/* Styles for Three Squares Section */
 .three-squares-section .square {
-    height: 450px; /* Adjust this height as needed */
+    height: 450px; /* Set square height */
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: #fff;
-    padding: 20px;
+    flex-direction: column; /* Column layout */
+    justify-content: center; /* Center vertically */
+    align-items: center; /* Center horizontally */
+    color: #fff; /* Text color */
+    padding: 20px; /* Inner padding */
 }
 
 .three-squares-section .blue-bg {
-    background-color: #0066cc; /* Nice Greek blue */
+    background-color: #0066cc; /* Blue background for square */
 }
 
 .three-squares-section .white-bg {
-    background-color: #fff;
+    background-color: #fff; /* White background for square */
     color: #333; /* Dark text color for contrast */
 }
 
-/* Button Styles */
+/* Button Styles for Three Squares Section */
 .three-squares-section .btn {
-    margin-top: 20px;
-    padding: 10px 20px;
-    border-radius: 5px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    margin-top: 20px; /* Space above buttons */
+    padding: 10px 20px; /* Button padding */
+    border-radius: 5px; /* Rounded corners */
+    text-transform: uppercase; /* Uppercase text */
+    letter-spacing: 1px; /* Letter spacing */
 }
 
 .three-squares-section .btn-light {
-    background-color: #fff;
-    color: #0066cc;
+    background-color: #fff; /* Light button background */
+    color: #0066cc; /* Light button text color */
 }
 
 .three-squares-section .btn-primary {
-    background-color: #0066cc;
-    color: #fff;
+    background-color: #0066cc; /* Primary button background */
+    color: #fff; /* Primary button text color */
 }
 
-/* Center the content inside each square with padding */
+/* Content Centering in Squares */
 .content {
-    text-align: center;
-    padding: 20px 40px; /* Add padding to the sides */
-    max-width: 100%;
-    box-sizing: border-box; /* Ensure padding doesn't affect width */
+    text-align: center; /* Center text */
+    padding: 20px 40px; /* Side padding */
+    max-width: 100%; /* Limit width */
+    box-sizing: border-box; /* Padding included in width */
 }
 
 /* Map Container Styles */
 .map-container {
-    width: 80%; /* Smaller width */
-    max-width: 100%;
-    height: 200px; /* Adjust height as needed */
-    border-radius: 5px;
-    overflow: hidden;
-    margin: 0 auto; /* Center the map container horizontally */
+    width: 80%; /* Width of the map */
+    max-width: 100%; /* Ensure it doesn't exceed container */
+    height: 200px; /* Height of the map */
+    border-radius: 5px; /* Rounded corners */
+    overflow: hidden; /* Hide overflow */
+    margin: 0 auto; /* Center horizontally */
 }
 
-#three-squares-section{
-    padding: 0;
-    margin: 0;
+#three-squares-section {
+    padding: 0; /* Reset padding */
+    margin: 0; /* Reset margin */
 }
 
+/* No Gutter Classes for Grid */
 .no-gutters {
-    margin-right: 0;
-    margin-left: 0;
+    margin-right: 0; /* Reset right margin */
+    margin-left: 0; /* Reset left margin */
 }
 
 .no-gutters > .col-md-4 {
-    padding-right: 0;
-    padding-left: 0;
+    padding-right: 0; /* Reset right padding for columns */
+    padding-left: 0; /* Reset left padding for columns */
 }
 
+/* Fluid Image Styles */
 .img-fluid {
-    background-size: contain; /* Ensure the image fits within the element */
-    height: 150px; /* Adjust the height as needed */
-    width: 150px; /* Adjust the width as needed */
-    display: block; /* Ensure it's a block element */
-    border-radius: 5px;
+    background-size: contain; /* Ensure image fits */
+    height: 150px; /* Set height */
+    width: 150px; /* Set width */
+    display: block; /* Block element */
+    border-radius: 5px; /* Rounded corners */
 }
-/* Menu Page */
+
+/* Menu Page Styles */
 /* Banner Section Styling */
 #menu-banner {
-    background-image: url("../images/menu-banner.png");
-    background-size: contain;
-    background-position: center; /* Centers the image */
-    background-repeat: no-repeat;
-    height: 300px; /* Adjust height as needed */
-    color: #fff;
-    background-color: #F6E1C2; /* Fallback color if image fails to load */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+    background-image: url("../images/menu-banner.png"); /* Banner image */
+    background-size: contain; /* Image fits the container */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* No repeat */
+    height: 300px; /* Banner height */
+    color: #fff; /* Text color */
+    background-color: #F6E1C2; /* Fallback color */
+    display: flex; /* Flex layout */
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+    text-align: center; /* Center text */
 }
 
 .banner-content {
-    padding: 20px;
-    background: rgba(0, 0, 0, 0.2); /* Optional: semi-transparent background for readability */
-    border-radius: 10px;
+    padding: 20px; /* Padding for banner content */
+    background: rgba(0, 0, 0, 0.2); /* Semi-transparent background */
+    border-radius: 10px; /* Rounded corners */
 }
 
 .banner-title {
-    font-size: 2.5rem; /* Responsive font size */
-    font-weight: bold;
-    margin: 0;
+    font-size: 2.5rem; /* Responsive title font size */
+    font-weight: bold; /* Bold title */
+    margin: 0; /* No margin */
 }
 
 .banner-subtitle {
-    font-size: 1.5rem; /* Responsive font size */
-    margin: 10px 0 0;
+    font-size: 1.5rem; /* Responsive subtitle font size */
+    margin: 10px 0 0; /* Margin above */
 }
 
 /* Menu Section Styling */
 .section {
-    padding: 60px 0;
-    background-color: #f8f9fa;
+    padding: 60px 0; /* Vertical padding */
+    background-color: #f8f9fa; /* Light background color */
 }
 
 .menu-section {
-    margin-bottom: 4rem;
+    margin-bottom: 4rem; /* Space below menu section */
 }
 
 .text-center {
-    text-align: center;
+    text-align: center; /* Center text */
 }
 
 .text-uppercase {
-    text-transform: uppercase;
+    text-transform: uppercase; /* Uppercase text */
 }
 
-/* Styling for the separator */
+/* Flex and Separator Styles */
 .d-flex {
-    display: flex;
+    display: flex; /* Flex layout */
 }
 
 .separator {
-    margin: 20px 0;
+    margin: 20px 0; /* Vertical space around separator */
 }
 
 .line {
-    flex: 1;
-    height: 1px;
-    background-color: #333;
+    flex: 1; /* Line takes available space */
+    height: 1px; /* Height of line */
+    background-color: #333; /* Line color */
 }
 
 .star {
-    font-size: 1.5rem; /* Adjusted for responsiveness */
-    color: #333;
+    font-size: 1.5rem; /* Star size */
+    color: #333; /* Star color */
 }
-/* Adjustments for background image in mythos-menu section */
+
+/* Mythos Menu Section Background Image */
 #mythos-menu {
-    background-image: url("../images/menu-paper.png");
-    background-size: contain; /* Ensures the full image is visible */
-    background-position: center;
-    background-repeat: no-repeat;
-    background-color: #F6E1C2;
-    height: 1371px;
-    padding: 40px;
-    position: relative;
+    background-image: url("../images/menu-paper.png"); /* Background image */
+    background-size: contain; /* Ensure image fits */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* No repeat */
+    background-color: #F6E1C2; /* Fallback color */
+    height: 1371px; /* Set height */
+    padding: 40px; /* Inner padding */
+    position: relative; /* Position relative */
 }
 
 .menu-container {
-    padding: 40px;
+    padding: 40px; /* Inner padding for menu container */
 }
 
-/* Responsive adjustments for menu container */
+/* Responsive Adjustments for Menu Container */
 @media (max-width: 992px) {
     #mythos-menu {
-        background-image: none; /* Remove background image on smaller screens */
+        background-image: none; /* Remove background on smaller screens */
     }
 }
 
+/* Falling Ingredients Background Styles */
 .falling-ingridients-right {
-    position: relative;
-    width: 100%; /* Ensure the width is responsive */
-    height: auto; /* Allow height to adjust based on content and width */
-    min-height: 1365px; /* Set a minimum height */
+    position: relative; /* Relative positioning */
+    width: 100%; /* Responsive width */
+    height: auto; /* Auto height */
+    min-height: 1365px; /* Minimum height */
     background-image: url("../images/herbs.png"), 
                       url("../images/tomato.png"), 
                       url("../images/olives.png"), 
-                      url("../images/feta.png");
-    background-size: contain, contain, contain, contain; /* Ensure each image covers the background */
-    background-position: left 50% top 0%, left 65% top 30%, left 40% top 65%, left 60% top 100%; /* Vertical and horizontal positions */
-    background-repeat: no-repeat; /* Prevent images from repeating */
+                      url("../images/feta.png"); /* Multiple background images */
+    background-size: contain, contain, contain, contain; /* Ensure images fit */
+    background-position: left 50% top 0%, left 65% top 30%, left 40% top 65%, left 60% top 100%; /* Image positions */
+    background-repeat: no-repeat; /* No repeat */
 }
 
 .falling-ingridients-left {
-    padding-right: 100px;
-    position: relative;
-    width: 100%; /* Ensure the width is responsive */
-    height: auto; /* Allow height to adjust based on content and width */
-    min-height: 1370px; /* Set a minimum height */
+    padding-right: 100px; /* Space on the right */
+    position: relative; /* Relative positioning */
+    width: 100%; /* Responsive width */
+    height: auto; /* Auto height */
+    min-height: 1370px; /* Minimum height */
     background-image: url("../images/olives.png"),  
                       url("../images/herbs.png"), 
                       url("../images/tomato.png"), 
-                      url("../images/feta.png");
-    background-size: contain, contain, contain, contain; /* Ensure each image covers the background */
-    background-position: left 50% top 0%, left 65% top 20%, left 40% top 65%, left 60% top 100%; /* Vertical and horizontal positions */
-    background-repeat: no-repeat; /* Prevent images from repeating */
+                      url("../images/feta.png"); /* Multiple background images */
+    background-size: contain, contain, contain, contain; /* Ensure images fit */
+    background-position: left 50% top 0%, left 65% top 20%, left 40% top 65%, left 60% top 100%; /* Image positions */
+    background-repeat: no-repeat; /* No repeat */
 }
 
+/* Form Control Styles */
 .form-control {
-    border-radius: 0.5rem;
-    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+    border-radius: 0.5rem; /* Rounded corners */
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1); /* Subtle shadow */
 }
 
+/* Primary Button Styles */
 .btn-primary {
-    border-radius: 0.5rem;
-    padding: 0.75rem 1.5rem;
-    font-size: 1rem;
+    border-radius: 0.5rem; /* Rounded corners */
+    padding: 0.75rem 1.5rem; /* Button padding */
+    font-size: 1rem; /* Font size */
 }
 
+/* General Container Styles */
 .container {
-    max-width: 800px;
-    margin-top: 50px;
+    max-width: 800px; /* Maximum width */
+    margin-top: 50px; /* Space above */
 }
 
+/* Background for Booking Page */
 .booking-page {
-    background-image: url(../images/background-booking.jpg);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
+    background-image: url(../images/background-booking.jpg); /* Background image */
+    background-repeat: no-repeat; /* No repeat */
+    background-position: center; /* Center the image */
+    background-size: cover; /* Cover the area */
 }
 
+/* Background for Contact Us Page */
 .contact-us-page {
-    background-image: url(../images/contact-us.jpg);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
+    background-image: url(../images/contact-us.jpg); /* Background image */
+    background-repeat: no-repeat; /* No repeat */
+    background-position: center; /* Center the image */
+    background-size: cover; /* Cover the area */
 }
 
+/* Form Content Styles */
 .form-content {
-    background: rgba(255, 255, 255, 0.4); /* Optional: semi-transparent background for readability */
-    border-radius: 10px;
-    padding: 5px;
+    background: rgba(255, 255, 255, 0.9); /* Semi-transparent background */
+    border-radius: 10px; /* Rounded corners */
+    padding: 5px; /* Inner padding */
 }
 
+/* Form Title Styles */
 .form-title {
-    text-align: center;
-    padding-top: 50px;
+    font-size: 4vw; /* Responsive font size */
+    text-align: center; /* Center title */
+    padding-top: 50px; /* Space above */
+    color: #fafafa; /* Title color */
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5); /* Text shadow for readability */
 }
 
-.contact-form-title {
-    text-align: center;
-    padding-top: 50px;
-    color: #f8f8f8;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-}
-
+/* Main Footer Styles */
 .main-footer {
-    background-color: #222; /* Dark background */
-    color: #fbf8e6; /* Light text */
-    padding-top: 50px;
+    background-color: #222; /* Dark footer background */
+    color: #fbf8e6; /* Light text color */
+    padding-top: 50px; /* Space above */
 }
 
+/* Footer Column Styles */
 .footer-column {
-    margin-bottom: 20px;
+    margin-bottom: 20px; /* Space below each column */
 }
 
+/* Footer Title Styles */
 .footer-title h3 {
-    font-size: 12px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    margin-bottom: 1.75em;
-    color: #fbf8e6;
+    font-size: 12px; /* Title font size */
+    letter-spacing: 0.1em; /* Spacing between letters */
+    text-transform: uppercase; /* Uppercase text */
+    margin-bottom: 1.75em; /* Space below title */
+    color: #fbf8e6; /* Title color */
 }
 
+/* Footer Content and Links Styles */
 .footer-content p,
 .footer-links li a {
-    font-size: 12px;
-    letter-spacing: 0.1em;
-    color: #fbf8e6;
-    margin-bottom: 1.75em;
+    font-size: 12px; /* Font size */
+    letter-spacing: 0.1em; /* Spacing between letters */
+    color: #fbf8e6; /* Link color */
+    margin-bottom: 1.75em; /* Space below */
 }
 
+/* Footer Links Styles */
 .footer-links {
-    list-style: none;
-    padding: 0;
+    list-style: none; /* No bullet points */
+    padding: 0; /* No padding */
 }
 
 .footer-links li {
-    margin-bottom: 5px;
+    margin-bottom: 5px; /* Space below each link */
 }
 
 .footer-links li a:hover {
-    color: rgba(255, 255, 255, 0.65);
+    color: rgba(255, 255, 255, 0.65); /* Change color on hover */
 }
 
+/* Social Icons Styles */
 .social-icons {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    font-size: 28px;
+    list-style: none; /* No bullet points */
+    padding: 0; /* No padding */
+    margin: 0; /* No margin */
+    font-size: 28px; /* Size of icons */
 }
 
 .social-icons li {
-    display: inline-block;
-    margin-right: 10px;
+    display: inline-block; /* Inline display for icons */
+    margin-right: 10px; /* Space between icons */
 }
 
+/* Footer Policy Links Styles */
 .footer-policy {
-    list-style: none;
-    padding: 0;
-    display: inline-flex;
-    margin-left: -13px;
+    list-style: none; /* No bullet points */
+    padding: 0; /* No padding */
+    display: inline-flex; /* Inline display */
+    margin-left: -13px; /* Adjust margin */
 }
 
 .footer-policy li {
-    margin-left: 13px;
+    margin-left: 13px; /* Space between policy items */
 }
 
 .footer-policy li a:hover {
-    color: rgba(255, 255, 255, 0.65);
+    color: rgba(255, 255, 255, 0.65); /* Change color on hover */
 }
 
+/* Text Alignment */
 .text-right {
-    text-align: right;
+    text-align: right; /* Right align text */
 }
