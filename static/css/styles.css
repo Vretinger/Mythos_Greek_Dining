@@ -191,10 +191,17 @@ body {
         background-color: #F5F8EF;
     }
     .navbar-content {
-        transform: translatey(-10%);
+        transform: translatey(40%);
+        padding-left: 10%;
     }
     #nav {
         text-align: center !important;
+    }
+    .menuitem {
+        display: block;
+    }
+    .menuitem span {
+        display: block;
     }
 }
 
@@ -270,14 +277,6 @@ body {
     transform: translateY(-4px);
 }
 
-@media (max-width: 768px) {
-    .menuitem {
-        display: block;
-    }
-    .menuitem span {
-        display: block;
-    }
-}
 /* Hover Effect for buttons */
 .hvr-fade:hover {
     background: rgba(0, 0, 0, 0.2); /* Background color on hover */
