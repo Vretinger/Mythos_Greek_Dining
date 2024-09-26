@@ -14,14 +14,12 @@
         {% csrf_token %}
         <!-- CSRF token for security -->
 
-        {% if messages %}
-            <ul class="messages">
-                {% for message in messages %}
-                    <li class="{{ message.tags }}">{{ message }}</li>
-                {% endfor %}
-            </ul>
-        <!-- Displays messages (e.g., success, errors) returned from the view -->
-        {% endif %}
+        {% if form.non_field_errors %}
+          <div class="alert alert-danger" role="alert">
+            {{ form.non_field_errors }}
+          </div>
+        {% endif %} 
+
   
         <div class="row">
           <!-- Name input field -->
