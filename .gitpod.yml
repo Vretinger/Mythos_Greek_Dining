@@ -1,7 +1,14 @@
 image:
   file: .gitpod.dockerfile
 tasks:
-  - init: . ${GITPOD_REPO_ROOT}/.vscode/init_tasks.sh
+  - init: |
+      sudo apt-get update
+      sudo apt-get install -y postgresql-13 postgresql-client-13
+      sudo service postgresql stop
+      sudo update-alternatives --set pg_ctl /usr/lib/postgresql/13/bin/pg_ctl
+      sudo update-alternatives --set psql /usr/lib/postgresql/13/bin/psql
+      sudo service postgresql start
+      . ${GITPOD_REPO_ROOT}/.vscode/init_tasks.sh
     command: /home/gitpod/.pg_ctl/bin/pg_start > /dev/null
   - command: . ${GITPOD_REPO_ROOT}/.vscode/uptime.sh &
 vscode:
