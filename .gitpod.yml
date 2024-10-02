@@ -5,6 +5,7 @@ tasks:
       sudo apt-get update
       sudo apt-get install -y postgresql-13 postgresql-client-13
       sudo service postgresql stop
+      sudo sed -i 's/^#port = .*/port = 5434/' /etc/postgresql/13/main/postgresql.conf  # Change port to 5434
       sudo update-alternatives --set pg_ctl /usr/lib/postgresql/13/bin/pg_ctl
       sudo update-alternatives --set psql /usr/lib/postgresql/13/bin/psql
       sudo service postgresql start
