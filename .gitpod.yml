@@ -1,9 +1,13 @@
-image:
-  file: .gitpod.dockerfile
+image: gitpod/workspace-postgres
+- name: database
+   port: 5432
+   onOpen: ignore
 tasks:
   - init: . ${GITPOD_REPO_ROOT}/.vscode/init_tasks.sh
     command: /home/gitpod/.pg_ctl/bin/pg_start > /dev/null
   - command: . ${GITPOD_REPO_ROOT}/.vscode/uptime.sh &
+  - name: create tables in db
+   command: './init-db.sh'
 vscode:
   extensions:
     - ms-python.python
