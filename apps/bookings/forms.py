@@ -17,6 +17,7 @@ class BookingForm(forms.ModelForm):
             'booking_date': forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}),
             'booking_time': forms.TimeInput(attrs={'class': 'form-control', 'type': 'time'}),
             'number_of_guests': forms.NumberInput(attrs={'class': 'form-control', 'min': 1}),
+            'alerigies': forms.Textarea(attrs={'class': 'form-control', 'rows': 1, 'placeholder': 'Any Alerigies?'}),
             'special_requests': forms.Textarea(attrs={'class': 'form-control', 'rows': 3, 'placeholder': 'Any special requests?'}),
         }
 
@@ -45,6 +46,7 @@ class BookingForm(forms.ModelForm):
                 Column(Field('number_of_guests', css_class='form-control'), css_class='form-group col-md-6 mb-0'),
                 css_class='form-row'
             ),
+            Field('alerigies', css_class='form-control'),
             Field('special_requests', css_class='form-control'),
         )
 

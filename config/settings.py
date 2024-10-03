@@ -25,10 +25,10 @@ SECRET_KEY = 'django-insecure-#e_(j!oy_&6=^(a*at$w$$1!5fueg)$=y(bguleykj7w@k0387
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['8000-vretinger-mythosgreekdi-dqku4xoxldz.ws-eu116.gitpod.io']
+ALLOWED_HOSTS = ['8000-vretinger-mythosgreekdi-5418m82vlfk.ws-eu116.gitpod.io']
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://8000-vretinger-mythosgreekdi-dqku4xoxldz.ws-eu116.gitpod.io',
+    'https://8000-vretinger-mythosgreekdi-5418m82vlfk.ws-eu116.gitpod.io',
 ]
 
 # Application definition
@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'apps.bookings', 
     'apps.menu',
     'apps.contact',
+    'apps.users',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
@@ -87,11 +88,11 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',
+        'NAME': 'mythos_database',
         'USER': 'postgres',
-        'PASSWORD': 'Fredrik08',
+        'PASSWORD': 'Bs0KVFl',
         'HOST': 'localhost',
-        'PORT': '5434',
+        'PORT': '5433',
     }
 }
 
@@ -115,6 +116,13 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+AUTH_USER_MODEL = 'users.CustomUser'
+
+
+LOGIN_URL = 'login'  # Redirect to the login page
+LOGIN_REDIRECT_URL = 'home'  # Where to redirect after a successful login
+LOGOUT_REDIRECT_URL = 'home'  # Where to redirect after logging out
 
 
 # Internationalization

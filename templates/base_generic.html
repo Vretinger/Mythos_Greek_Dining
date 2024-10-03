@@ -51,6 +51,9 @@
                         <li class="nav-item list-inline-item menuitem">
                             <a href="{% url 'contact' %}" class="hvr-fade"><span>Contact</span></a>
                         </li>
+                        <li class="nav-item list-inline-item menuitem"></li>
+                            <a href="{% url 'login' %}" class="hvr-fade"><span>My account</span></a>
+                        </li>
                     </ul>
                 </nav>              
             </div>
@@ -84,6 +87,9 @@
                             </li>
                             <li class="nav-item p-2">
                                 <a href="{% url 'contact' %}" class="btn-collapse"><span>Contact</span></a>
+                            </li>
+                            <li class="nav-item p-2">
+                                <a href="{% url 'login' %}" class="btn-collapse"><span>My account</span></a>
                             </li>
                         </ul>
                     </div>
@@ -170,5 +176,6 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.bundle.min.js"></script>
     <!-- Link to custom JavaScript file -->
     <script src="{% static 'js/script.js' %}"></script>
+    <script src="{% static 'js/signup_validation.js' %}"></script>
 </body>
 </html>

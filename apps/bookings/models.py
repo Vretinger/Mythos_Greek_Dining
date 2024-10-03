@@ -41,25 +41,42 @@ class Booking(models.Model):
         return f"{self.guest_name} - {self.booking_date} at {self.booking_time}"
 
     def clean(self):
-        # Call parent clean method to maintain any default validation
-        super().clean()
+        cleaned_data = super().clean()
+        print(cleaned_data)
+        
+        # Make sure cleaned_data is not None
+        if cleaned_data is None:
+            cleaned_data = {}
+            
+        booking_date = cleaned_data.get('booking_date')
+        booking_time = cleaned_data.get('booking_time')
+        number_of_guests = cleaned_data.get('number_of_guests')
+        table = cleaned_data.get('table')
 
-        # Ensure booking is for a future date and time
-        booking_datetime = datetime.combine(self.booking_date, self.booking_time)
-        booking_datetime_aware = timezone.make_aware(booking_datetime)
 
-        # Validate that the booking date and time are not in the past
-        if booking_datetime_aware < timezone.now():
-            raise ValidationError('The selected date and time have already passed.')
+        # Validate table variable presence and get its buffer times
+        if table:
+            buffer_before = table.buffer_before
+            buffer_after = table.buffer_after
 
-        # Ensure number of guests doesn't exceed table capacity
-        if self.table and self.number_of_guests > self.table.capacity:
-            raise ValidationError(f"Number of guests exceeds the table's capacity of {self.table.capacity}.")
+            # Combine date and time only if both are provided
+            booking_datetime = timezone.make_aware(datetime.combine(booking_date, booking_time))
 
-        # Add any other custom validation here (e.g., no conflicting bookings)
+            # Check if the number of guests exceeds the table capacity
+            if number_of_guests > table.capacity:
+                raise ValidationError('Number of guests exceeds the table capacity.')
 
-    def save(self, *args, **kwargs):
-        # Call the full_clean method before saving to ensure validation
-        self.full_clean()
-        super().save(*args, **kwargs)
+            # Check for booking conflicts
+            if Booking.objects.filter(
+                table=table,
+                booking_date=booking_date,
+                booking_time__range=(
+                    (booking_datetime - buffer_before).time(),
+                    (booking_datetime + buffer_after).time()
+                )
+            ).exists():
+                raise ValidationError('This table is already booked for the selected date and time.')
+        
+
+        return cleaned_data
 
