@@ -1,17 +1,12 @@
 image:
   file: .gitpod.dockerfile
-
 tasks:
-  - init: |
-      sudo apt-get update
-      sudo apt-get install -y postgresql-13 postgresql-client-13
-      # Modify PostgreSQL config to run on port 5433
-      sudo sed -i "s/#port = 5432/port = 5433/" /etc/postgresql/13/main/postgresql.conf
-      sudo service postgresql start
-  - command: |
-      sudo service postgresql start  # Ensure PostgreSQL starts on port 5433
-      . ${GITPOD_REPO_ROOT}/.vscode/uptime.sh &
-
+  init:
+    - sudo apt-get update
+    - sudo apt-get install -y postgresql postgresql-client
+    - sudo service postgresql start  # Start the PostgreSQL service
+  command: |
+    sudo service postgresql start  # Ensure PostgreSQL starts on command
 vscode:
   extensions:
     - ms-python.python
