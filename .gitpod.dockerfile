@@ -55,10 +55,8 @@ RUN wget http://archive.ubuntu.com/ubuntu/pool/main/o/openssl/libssl1.1_1.1.1f-1
 
 # Setup PostgreSQL
 
-RUN sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" | tee /etc/apt/sources.list.d/pgdg.list' && \
-    sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv B97B0AFCAA1A47F044F244A07FCC7D46ACCC4CF8 && \
-    sudo apt-get update -y && \
-    sudo apt-get install -y postgresql-13
+RUN sudo apt-get update && \
+    sudo apt-get install -y postgresql-13 postgresql-client-13 && \
     sudo service postgresql start
 
 ENV PGDATA="/workspace/.pgsql/data"
