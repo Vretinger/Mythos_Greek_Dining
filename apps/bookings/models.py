@@ -3,6 +3,7 @@
 from django.db import models
 from django.core.exceptions import ValidationError
 from django.core.validators import RegexValidator
+from django.conf import settings
 from datetime import datetime
 from django.utils import timezone
 
@@ -16,11 +17,6 @@ class Table(models.Model):
     def __str__(self):
         return f"Table {self.table_number} - {self.capacity} seats"
 
-# bookings/models.py
-
-from django.core.exceptions import ValidationError
-from django.utils import timezone
-from datetime import datetime
 
 class Booking(models.Model):
     phone_validator = RegexValidator(
@@ -34,8 +30,18 @@ class Booking(models.Model):
     booking_time = models.TimeField()
     number_of_guests = models.IntegerField()
     table = models.ForeignKey(Table, on_delete=models.SET_NULL, null=True, blank=True)
-    special_requests = models.TextField(blank=True, null=True)
+    allergies = models.TextField(blank=True, null=True)
+    dietary_preferences = models.TextField(blank=True, null=True)
+    additional_notes = models.TextField(blank=True, null=True)
     confirmed = models.BooleanField(default=True)  # Set default to True
+    
+    # Foreign key to associate booking with user
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL, 
+        on_delete=models.CASCADE, 
+        related_name='booking_set_bookings',
+        null=True   # Custom related name
+    )
 
     def __str__(self):
         return f"{self.guest_name} - {self.booking_date} at {self.booking_time}"

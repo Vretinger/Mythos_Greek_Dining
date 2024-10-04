@@ -51,8 +51,12 @@
                         <li class="nav-item list-inline-item menuitem">
                             <a href="{% url 'contact' %}" class="hvr-fade"><span>Contact</span></a>
                         </li>
-                        <li class="nav-item list-inline-item menuitem"></li>
-                            <a href="{% url 'login' %}" class="hvr-fade"><span>My account</span></a>
+                        <li class="nav-item list-inline-item menuitem">
+                            {% if user.is_authenticated %}
+                                <a href="{% url 'manage_bookings' %}" class="hvr-fade"><span>My account</span></a>
+                            {% else %}
+                                <a href="{% url 'login' %}" class="hvr-fade"><span>Sign up/Log in</span></a>
+                            {% endif %}
                         </li>
                     </ul>
                 </nav>              
@@ -89,7 +93,11 @@
                                 <a href="{% url 'contact' %}" class="btn-collapse"><span>Contact</span></a>
                             </li>
                             <li class="nav-item p-2">
-                                <a href="{% url 'login' %}" class="btn-collapse"><span>My account</span></a>
+                                {% if user.is_authenticated %}
+                                    <a href="{% url 'login' %}" class="btn-collapse"><span>My account</span></a>
+                                {% else %}
+                                    <a href="{% url 'login' %}" class="btn-collapse"><span>Sign up/Log in</span></a>
+                                {% endif %}
                             </li>
                         </ul>
                     </div>

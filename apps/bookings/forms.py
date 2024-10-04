@@ -5,21 +5,9 @@ from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Field, Row, Column, Submit
 
 class BookingForm(forms.ModelForm):
-    # Meta class defines the model and fields used in the form
     class Meta:
         model = Booking
-        fields = ['guest_name', 'guest_email', 'phone', 'booking_date', 'booking_time', 'number_of_guests', 'special_requests']
-        # Define widgets for better UI control
-        widgets = {
-            'guest_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Full Name'}),
-            'guest_email': forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'Email Address'}),
-            'phone': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Phone Number'}),
-            'booking_date': forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}),
-            'booking_time': forms.TimeInput(attrs={'class': 'form-control', 'type': 'time'}),
-            'number_of_guests': forms.NumberInput(attrs={'class': 'form-control', 'min': 1}),
-            'alerigies': forms.Textarea(attrs={'class': 'form-control', 'rows': 1, 'placeholder': 'Any Alerigies?'}),
-            'special_requests': forms.Textarea(attrs={'class': 'form-control', 'rows': 3, 'placeholder': 'Any special requests?'}),
-        }
+        fields = ['phone', 'guest_name', 'guest_email', 'booking_date', 'booking_time', 'number_of_guests', 'allergies', 'dietary_preferences', 'additional_notes' ]
 
     def __init__(self, *args, **kwargs):
         # Initialize the form and set up Crispy Forms helper for layout

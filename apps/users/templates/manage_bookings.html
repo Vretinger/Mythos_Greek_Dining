@@ -1,0 +1,26 @@
+{% extends 'base_generic.html' %}
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center">Manage Your Bookings</h2>
+    <hr>
+    <h1>My Bookings</h1>
+    {% if bookings %}
+        <ul>
+        {% for booking in bookings %}
+            <li>{{ booking }}</li>  <!-- Adjust according to your booking model string representation -->
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No bookings found.</p>
+    {% endif %}
+
+    <!-- Logout Button -->
+    <div class="text-right mb-3">
+        <form action="{% url 'logout' %}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Logout</button>
+        </form>
+    </div>
+
+</div>
+{% endblock %}

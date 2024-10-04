@@ -4,7 +4,6 @@ from django.conf import settings
 from django.core.exceptions import ValidationError
 
 class Booking(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, blank=True)  # Use the custom user model
     guest_name = models.CharField(max_length=100)
     guest_email = models.EmailField()
     phone = models.CharField(max_length=15)
@@ -13,6 +12,14 @@ class Booking(models.Model):
     num_of_guests = models.IntegerField()
     special_requests = models.TextField(blank=True, null=True)
     confirmed = models.BooleanField(default=False)
+
+    # Foreign key to associate booking with user
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL, 
+        on_delete=models.CASCADE, 
+        related_name='booking_set_user',
+        null=True   # Custom related name
+    )
 
     def __str__(self):
         return f'{self.guest_name} - {self.booking_date}'
@@ -45,6 +52,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['first_name', 'last_name', 'phone_number']
+    
 
     def __str__(self):
         return self.email
@@ -57,3 +65,6 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     def save(self, *args, **kwargs):
         self.full_clean()  # Validate before saving
         super().save(*args, **kwargs)
+
+    def get_full_name(self):
+        return f"{self.first_name} {self.last_name}".strip()
