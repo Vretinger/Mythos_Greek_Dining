@@ -1,11 +1,11 @@
 image:
   file: .gitpod.dockerfile
 tasks:
-  init:
+  - init: |
     - sudo apt-get update
     - sudo apt-get install -y postgresql postgresql-client
     - sudo service postgresql start  # Start the PostgreSQL service
-  command: |
+  - command: |
     sudo service postgresql start  # Ensure PostgreSQL starts on command
 vscode:
   extensions:
