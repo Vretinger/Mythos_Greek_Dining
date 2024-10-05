@@ -1,26 +1,110 @@
 {% extends 'base_generic.html' %}
 {% block content %}
-<div class="container mt-5">
-    <h2 class="text-center">Manage Your Bookings</h2>
-    <hr>
-    <h1>My Bookings</h1>
-    {% if bookings %}
-        <ul>
-        {% for booking in bookings %}
-            <li>{{ booking }}</li>  <!-- Adjust according to your booking model string representation -->
-        {% endfor %}
-        </ul>
-    {% else %}
-        <p>No bookings found.</p>
-    {% endif %}
+<section id="My-account"  class="hero">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-8">
+                <div class="form-card">
+                    <h5 class="text-center">Manage Your Bookings</h5>
+                    <hr>
+                    <h4>My Bookings</h4>
+                    {% if bookings %}
+                    <ul class="list-unstyled scrollable-container">
+                        {% for booking in bookings %}
+                            <li class="mb-4 p-1">
+                                <!-- Mobile Card -->
+                                <div class="card d-block d-md-none mb-3">
+                                    <div class="card-body d-flex justify-content-center align-items-center"
+                                         data-bs-toggle="collapse" 
+                                         data-bs-target="#booking-details-{{ booking.id }}" 
+                                         style="cursor: pointer;">
+                                        <!-- Booking Overview -->
+                                        <div>
+                                            <h5 class="card-title mb-1">{{ booking.booking_date }}</h5>
+                                            <p class="card-text mb-1">{{ booking.booking_time }}</p>
+                                            <p class="card-text mb-1">{{ booking.guest_name }}</p>
+                                            {% if booking.confirmed %}
+                                                <span class="badge bg-success">Confirmed</span>
+                                            {% else %}
+                                                <span class="badge bg-danger">Passed</span>
+                                            {% endif %}
+                                        </div>
+                    
+                                        <div class="ms-3">
+                                            <i class="bi bi-chevron-down"></i> <!-- Optional icon -->
+                                        </div>
+                                    </div>
+                                    <div class="collapse position-relative" id="booking-details-{{ booking.id }}">
+                                        <div class="card-footer">
+                                            <p><strong>Allergies:</strong> {{ booking.allergies }}</p>
+                                            <p><strong>Dietary Preferences:</strong> {{ booking.dietary_preferences }}</p>
+                                            <p><strong>Additional Notes:</strong> {{ booking.additional_notes }}</p>
+                                            <div class="action-buttons">
+                                                {% if booking.confirmed %}
+                                                    <a href="{% url 'edit_booking' booking.id %}" class="btn btn-primary btn-sm">Edit</a>
+                                                    <a href="{% url 'delete_booking' booking.id %}" class="btn btn-danger btn-sm">Delete</a>
+                                                {% else %}
+                                                    <a href="{% url 'delete_booking' booking.id %}" class="btn btn-danger btn-sm">Delete</a>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                    
+                                <!-- Desktop Card -->
+                                <div class="container-fluid booking-card d-none d-md-block">
+                                    <ul class="list-group list-group-horizontal align-items-center list-unstyled">
+                                        <!-- Booking details -->
+                                        <li class="flex-fill pt-2">
+                                            <h5 class="card-title mb-1">{{ booking.booking_date }}</h5>
+                                        </li>
+                                        <li class="flex-fill pt-2">
+                                            <p class="card-text mb-1">{{ booking.booking_time }}</p>
+                                        </li>
+                                        <li class="flex-fill pt-2">
+                                            <p class="card-text mb-1">{{ booking.guest_name }}</p>
+                                        </li>
+                                        <li class="flex-fill pt-2">
+                                            <p class="card-text mb-1">Guests: {{ booking.number_of_guests }}</p>
+                                        </li>
+                                        <li class="flex-fill">
+                                            {% if booking.confirmed %}
+                                                <span class="badge bg-success">Confirmed</span>
+                                            {% else %}
+                                                <span class="badge bg-danger">Passed</span>
+                                            {% endif %}
+                                        </li>
+                                    </ul>
+                                </div>
+                    
+                                <!-- Edit and Delete buttons (Desktop) -->
+                                <div class="container-fluid pt-1 justify-content-end d-none d-md-flex">
+                                    <div class="action-buttons">
+                                        {% if booking.confirmed %}
+                                            <a href="{% url 'edit_booking' booking.id %}" class="btn btn-primary btn-sm">Edit</a>
+                                            <a href="{% url 'delete_booking' booking.id %}" class="btn btn-danger btn-sm">Delete</a>
+                                        {% else %}
+                                            <a href="{% url 'delete_booking' booking.id %}" class="btn btn-danger btn-sm">Delete</a>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </li>
+                        {% endfor %}
+                    </ul>                    
+                    {% else %}
+                        <p>No bookings found.</p>
+                    {% endif %}
 
-    <!-- Logout Button -->
-    <div class="text-right mb-3">
-        <form action="{% url 'logout' %}" method="post">
-            {% csrf_token %}
-            <button type="submit" class="btn btn-danger">Logout</button>
-        </form>
+                    <!-- Logout Button -->
+                    <div class="text-right mb-3">
+                        <form action="{% url 'logout' %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger">Logout</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-
-</div>
+</section>
 {% endblock %}

@@ -25,10 +25,10 @@ SECRET_KEY = 'django-insecure-#e_(j!oy_&6=^(a*at$w$$1!5fueg)$=y(bguleykj7w@k0387
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['8000-vretinger-mythosgreekdi-5418m82vlfk.ws-eu116.gitpod.io']
+ALLOWED_HOSTS = ['8000-vretinger-mythosgreekdi-5vng6o7wal6.ws.codeinstitute-ide.net']
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://8000-vretinger-mythosgreekdi-5418m82vlfk.ws-eu116.gitpod.io',
+    'https://8000-vretinger-mythosgreekdi-5vng6o7wal6.ws.codeinstitute-ide.net',
 ]
 
 # Application definition
@@ -93,7 +93,7 @@ DATABASES = {
         'USER': 'postgres',
         'PASSWORD': 'Bs0KVFl',
         'HOST': 'localhost',
-        'PORT': '5433',
+        'PORT': '5432',
     }
 }
 
@@ -119,6 +119,9 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 AUTH_USER_MODEL = 'users.CustomUser'
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',  # Default backend
+]
 
 
 LOGIN_URL = 'login'  # Redirect to the login page

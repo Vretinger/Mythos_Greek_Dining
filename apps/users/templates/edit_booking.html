@@ -1,0 +1,119 @@
+{% extends 'base_generic.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<section class="container-fluid p-0 booking-page">
+    <div class="container py-5 mt-0">
+        <h1 class="mb-4 form-title">Edit Booking</h1>
+        <form method="post" class="needs-validation form-content" novalidate="">
+            {% csrf_token %}
+            {% if form.non_field_errors %}
+                <div class="alert alert-danger" role="alert">
+                    {{ form.non_field_errors }}
+                </div>
+            {% endif %} 
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="guest_name">Name</label>
+                    <input type="text" class="form-control {% if form.guest_name.errors %}is-invalid{% endif %}" id="guest_name" name="guest_name" placeholder="Full Name" value="{{ form.guest_name.value|default_if_none:'' }}">
+                    {% for error in form.guest_name.errors %}
+                        <div class="invalid-feedback">{{ error }}</div>
+                    {% endfor %}
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label for="guest_email">Email</label>
+                    <input type="email" class="form-control {% if form.guest_email.errors %}is-invalid{% endif %}" id="guest_email" name="guest_email" placeholder="Email Address" value="{{ form.guest_email.value|default_if_none:'' }}">
+                    {% for error in form.guest_email.errors %}
+                        <div class="invalid-feedback">{{ error }}</div>
+                    {% endfor %}
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label for="phone">Phone</label>
+                    <input type="tel" class="form-control {% if form.phone.errors %}is-invalid{% endif %}" id="phone" name="phone" placeholder="Phone Number" value="{{ form.phone.value|default_if_none:'' }}">
+                    {% for error in form.phone.errors %}
+                        <div class="invalid-feedback">{{ error }}</div>
+                    {% endfor %}
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label for="booking_date">Date</label>
+                    <input type="date" class="form-control {% if form.booking_date.errors %}is-invalid{% endif %}" id="booking_date" name="booking_date" value="{{ form.booking_date.value|date:'Y-m-d'|default_if_none:'' }}">
+                    {% for error in form.booking_date.errors %}
+                        <div class="invalid-feedback">{{ error }}</div>
+                    {% endfor %}
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label for="booking_time">Time</label>
+                    <input type="time" class="form-control {% if form.booking_time.errors %}is-invalid{% endif %}" id="booking_time" name="booking_time" value="{{ form.booking_time.value|date:'H:i'|default_if_none:'' }}">
+                    {% for error in form.booking_time.errors %}
+                        <div class="invalid-feedback">{{ error }}</div>
+                    {% endfor %}
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label for="num_of_guests">Number of People</label>
+                    <input type="number" class="form-control {% if form.num_of_guests.errors %}is-invalid{% endif %}" id="number_of_guests" name="number_of_guests" placeholder="Number of People" min="1" value="{{ form.number_of_guests.value|default_if_none:'' }}">
+                    {% for error in form.num_of_guests.errors %}
+                        <div class="invalid-feedback">{{ error }}</div>
+                    {% endfor %}
+                </div>
+
+                <!-- Allergies input field -->
+                <div class="col-md-12 mb-3">
+                    <label for="allergies">Allergies (if any)</label>
+                    <input type="text" class="form-control {% if form.allergies.errors %}is-invalid{% endif %}" id="allergies" name="allergies" placeholder="Please specify any allergies" value="{{ form.allergies.value|default_if_none:'' }}">
+                    {% for error in form.allergies.errors %}
+                        <div class="invalid-feedback">{{ error }}</div>
+                    {% endfor %}
+                </div>
+
+                <!-- Dietary Preferences input field -->
+                <div class="col-md-12 mb-3">
+                    <label for="dietary_preferences">Dietary Preferences</label>
+                    <input type="text" class="form-control {% if form.dietary_preferences.errors %}is-invalid{% endif %}" id="dietary_preferences" name="dietary_preferences" placeholder="Vegetarian, Vegan, etc." value="{{ form.dietary_preferences.value|default_if_none:'' }}">
+                    {% for error in form.dietary_preferences.errors %}
+                        <div class="invalid-feedback">{{ error }}</div>
+                    {% endfor %}
+                </div>
+
+                <!-- Additional Notes input field -->
+                <div class="col-md-12 mb-3">
+                    <label for="additional_notes">Additional Notes</label>
+                    <textarea class="form-control {% if form.additional_notes.errors %}is-invalid{% endif %}" id="additional_notes" name="additional_notes" rows="3" placeholder="Any additional notes?">{{ form.additional_notes.value }}</textarea>
+                    {% for error in form.additional_notes.errors %}
+                        <div class="invalid-feedback">{{ error }}</div>
+                    {% endfor %}
+                </div>
+
+                <div class="col-md-12 text-center edit-booking">
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#discardModal">Discard</button>
+                </div>                
+            </div>
+        </form>
+    </div>
+</section>
+<!-- Discard Confirmation Modal -->
+<div class="modal fade" id="discardModal" tabindex="-1" role="dialog" aria-labelledby="discardModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="discardModalLabel">Discard Changes</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to discard your changes? This action cannot be undone.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <a href="{% url 'manage_bookings' %}" class="btn btn-danger">Discard</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
