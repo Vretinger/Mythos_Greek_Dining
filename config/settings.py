@@ -25,10 +25,10 @@ SECRET_KEY = 'django-insecure-#e_(j!oy_&6=^(a*at$w$$1!5fueg)$=y(bguleykj7w@k0387
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['8000-vretinger-mythosgreekdi-5vng6o7wal6.ws.codeinstitute-ide.net','.herokuapp.com']
+ALLOWED_HOSTS = ['8000-vretinger-mythosgreekdi-b6wkymmemuv.ws-eu116.gitpod.io','.herokuapp.com']
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://8000-vretinger-mythosgreekdi-5vng6o7wal6.ws.codeinstitute-ide.net',
+    'https://8000-vretinger-mythosgreekdi-b6wkymmemuv.ws-eu116.gitpod.io',
 ]
 
 # Application definition
