@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:100,200,300,400,500,600,700|Exo:100,200,300,400,500,600,700');
 @import url('https://fonts.googleapis.com/css?family=Roboto:100,200,300,400,500,600,700|Exo:100,200,300,400,500,600,700');
+@import url('https://fonts.googleapis.com/css2?family=Caesar+Dressing&display=swap:100,200,300,400,500,600,700|Exo:100,200,300,400,500,600,700');
 
 /* Base Styles */
 html, body {
@@ -127,6 +128,11 @@ body {
     transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
+.navbar-content a {
+    text-decoration: none; /* Remove underline */
+}
+
+
 .nav a, .btn-collapse a {
     text-decoration: none; /* Removes underline */
 }
@@ -246,6 +252,7 @@ body {
 
 /* Restaurant Name */
 .restaurant-name {
+    font-family: 'Caesar Dressing','Roboto', sans-serif;
     padding-top: 50px;
     transform: translateY(0px);
     transition: opacity 0.5s ease, transform 0.5s ease;
@@ -585,7 +592,7 @@ body {
 }
 
 .form-title {
-    font-size: 4vw; /* Responsive font size */
+    font-size: 3rem; /* Responsive font size */
     text-align: center; /* Center title */
     padding-top: 50px; /* Space above */
     color: #fafafa; /* Title color */
