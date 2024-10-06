@@ -1,1 +1,1 @@
-web: gunicorn Mythos-Greek-Dining.wsgi
+web: gunicorn config.wsgi

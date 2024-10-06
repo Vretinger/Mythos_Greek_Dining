@@ -21,11 +21,11 @@ def register(request):
             if user is not None:
                 login(request, user)  # Log the user in
                 messages.success(request, f"Account created for {email}!")
-                return redirect('home')  # Redirect to some page after login
+                return redirect('manage_bookings')  # Redirect to some page after login
     else:
         form = CustomUserCreationForm()
     
-    return render(request, 'signup.html', {'form': form})
+    return render(request, 'register.html', {'form': form})
 
 
 def login_view(request):
