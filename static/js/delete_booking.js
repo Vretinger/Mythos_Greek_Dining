@@ -8,5 +8,6 @@
 
      // Update the form action URL
      const form = deleteModal.querySelector('#deleteBookingForm');
-     form.action = `{% url 'delete_booking' '0' %}`.replace('0', bookingId);  // Use a placeholder and replace it
+     form.action = `/users/delete_booking/${bookingId}/`;  // Construct the action URL directly
  });
+ 

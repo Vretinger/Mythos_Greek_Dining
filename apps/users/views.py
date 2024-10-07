@@ -81,7 +81,7 @@ def delete_booking(request, booking_id):
         booking.delete()
         return redirect('manage_bookings')  # Redirect to the bookings management page
 
-    return render(request, 'delete_booking.html', {'booking': booking})
+    return render(request, 'manage_bookings', {'booking': booking})
 
 
 
