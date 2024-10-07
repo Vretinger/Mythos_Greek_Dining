@@ -764,3 +764,8 @@ button[type="submit"] {
 .text-right {
     text-align: right; /* Right align text */
 }
+
+
+.modal-content {
+    color:#222
+}
