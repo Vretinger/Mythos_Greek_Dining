@@ -106,6 +106,12 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / "db.sqlite3",
+    }
+}
 
 DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
 
@@ -137,7 +143,7 @@ AUTHENTICATION_BACKENDS = [
 
 
 LOGIN_URL = 'login'  # Redirect to the login page
-LOGIN_REDIRECT_URL = 'home'  # Where to redirect after a successful login
+LOGIN_REDIRECT_URL = 'manage_bookings'  # Where to redirect after a successful login
 LOGOUT_REDIRECT_URL = 'home'  # Where to redirect after logging out
 
 
