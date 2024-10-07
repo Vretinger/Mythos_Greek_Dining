@@ -109,13 +109,13 @@
 
 <!-- Modal -->
 <!-- Delete Modal -->
-<div class="modal fade" id="delete_booking" tabindex="-1" aria-labelledby="delete_booking_label" aria-hidden="true">
+<div class="modal fade" id="delete_booking" data-bs-backdrop="static" tabindex="-1" aria-labelledby="delete_booking_label" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="delete_booking_label">Delete {{ booking }}?</h5>
             </div>
-            <form action="{% url 'delete_booking' booking.id %}" method="post">
+            <form action="{% url 'delete_booking' booking_id=booking.id %}" method="post">
                 {% csrf_token %}
       
                 <div class="modal-body">
