@@ -82,9 +82,9 @@
                                     <div class="action-buttons">
                                         {% if booking.confirmed %}
                                             <a href="{% url 'edit_booking' booking.id %}" class="btn btn-primary btn-sm">Edit</a>
-                                            <a href="#" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</a>
+                                            <a href="#" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal" data-booking-id="{{ booking.id }}">Delete</a>
                                         {% else %}
-                                            <a href="#" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</a>
+                                            <a href="#" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal" data-booking-id="{{ booking.id }}">Delete</a>
                                         {% endif %}
                                     </div>
                                 </div>
@@ -122,7 +122,7 @@
                 <p>{{ booking }}</p>
             </div>
             <div class="modal-footer">
-                <form method="post">
+                <form action="{% url 'delete_booking/${bookingId}/' %}" method="post">
                     {% csrf_token %}
                     <button type="submit" class="btn btn-danger">Confirm Delete</button>
                 </form>
