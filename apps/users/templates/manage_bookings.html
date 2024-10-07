@@ -109,7 +109,7 @@
 
 <!-- Modal -->
 
-<!-- Delet booking Modal -->
+<!-- Delete Modal -->
 <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -119,10 +119,10 @@
             </div>
             <div class="modal-body">
                 <p>Are you sure you want to delete this booking?</p>
-                <p>{{ booking }}</p>
+                <p id="booking-info"></p> <!-- You can show more info if needed -->
             </div>
             <div class="modal-footer">
-                <form action="{% url 'delete_booking' booking.id %}" method="post">
+                <form id="deleteBookingForm" method="post">
                     {% csrf_token %}
                     <button type="submit" class="btn btn-danger">Confirm Delete</button>
                 </form>
