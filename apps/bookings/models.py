@@ -4,7 +4,7 @@ from django.db import models
 from django.core.exceptions import ValidationError
 from django.core.validators import RegexValidator
 from django.conf import settings
-from datetime import datetime
+from datetime import datetime, time
 from django.utils import timezone
 
 class Table(models.Model):
