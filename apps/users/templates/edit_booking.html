@@ -47,7 +47,7 @@
 
                 <div class="col-md-6 mb-3">
                     <label for="booking_time">Time</label>
-                    <input type="time" class="form-control {% if form.booking_time.errors %}is-invalid{% endif %}" id="booking_time" name="booking_time" value="{{ form.booking_time.value|date:'H:i'|default_if_none:'' }}">
+                    <input type="time" class="form-control {% if form.booking_time.errors %}is-invalid{% endif %}" id="booking_time" name="booking_time" value="{{ form.booking_time.value|default_if_none:'' }}" step="900">
                     {% for error in form.booking_time.errors %}
                         <div class="invalid-feedback">{{ error }}</div>
                     {% endfor %}

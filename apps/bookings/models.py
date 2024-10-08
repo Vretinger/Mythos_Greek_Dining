@@ -21,7 +21,7 @@ class Table(models.Model):
 class Booking(models.Model):
     phone_validator = RegexValidator(
         regex=r'^\+?1?\d{9,15}$',
-        message="Phone number must be entered in the format: '+999999999'. Up to 15 digits allowed."
+        message="Phone number must be entered in the format: '+999999999'."
     )
     phone = models.CharField(validators=[phone_validator], max_length=17, blank=False)
     guest_name = models.CharField(max_length=100)
@@ -43,12 +43,19 @@ class Booking(models.Model):
         null=True   # Custom related name
     )
 
+
+    
     def __str__(self):
-        return f"{self.guest_name} - {self.booking_date} at {self.booking_time}"
+        return f"Booking for {self.guest_name} on {self.booking_date} at {self.booking_time}"
 
     def clean(self):
         cleaned_data = super().clean()
         print(cleaned_data)
+
+        # Define allowed booking time range
+        opening_time = time(10, 0)  # 10:00 AM
+        closing_time = time(22, 0)  # 10:00 PM
+
         
         # Make sure cleaned_data is not None
         if cleaned_data is None:
@@ -58,6 +65,13 @@ class Booking(models.Model):
         booking_time = cleaned_data.get('booking_time')
         number_of_guests = cleaned_data.get('number_of_guests')
         table = cleaned_data.get('table')
+
+
+        # Validate booking time
+        if not (opening_time <= self.booking_time <= closing_time):
+            raise ValidationError({
+                'booking_time': _('Booking time must be between 10:00 and 22:00.')
+            })
 
 
         # Validate table variable presence and get its buffer times

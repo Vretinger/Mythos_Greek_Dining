@@ -5,24 +5,25 @@ from django.contrib.auth.views import LoginView
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib import messages
 from django.utils import timezone
+from django.http import HttpResponseRedirect
 from datetime import datetime
 from .forms import BookingForm, CustomUserCreationForm, CustomAuthenticationForm
 from apps.bookings.models import Booking
 
 
 def register(request):
+    next_url = request.GET.get('next', 'manage_bookings')  # Default to 'manage_bookings' if no 'next' is provided
     if request.method == 'POST':
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
             user = form.save()  # Save the new user
-            # Automatically log the user in
             raw_password = form.cleaned_data.get('password1')
             email = form.cleaned_data.get('email')
             user = authenticate(request, email=email, password=raw_password)
             if user is not None:
                 login(request, user)  # Log the user in
                 messages.success(request, f"Account created for {email}!")
-                return redirect('manage_bookings')  # Redirect to some page after login
+                return redirect(next_url)  # Redirect to 'next' URL or fallback
     else:
         form = CustomUserCreationForm()
     
@@ -30,14 +31,17 @@ def register(request):
 
 
 def login_view(request):
+    next_url = request.GET.get('next', 'manage_bookings')  # Default to 'manage_bookings' if no 'next' is provided
     if request.method == 'POST':
         form = CustomAuthenticationForm(request, data=request.POST)
         if form.is_valid():
             login(request, form.get_user())
-            return redirect('manage_bookings') 
+            return redirect(next_url)  # Redirect to 'next' URL or fallback
     else:
         form = CustomAuthenticationForm()
+    
     return render(request, 'login.html', {'form': form})
+
 
 
 def custom_logout(request):

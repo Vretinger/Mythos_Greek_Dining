@@ -54,6 +54,12 @@
                         {% endif %}
                     </div>
                 </div>
+
+                 <!-- Preserve 'next' parameter if it's present -->
+                {% if request.GET.next %}
+                <input type="hidden" name="next" value="{{ request.GET.next }}">
+                {% endif %}
+
                 <button type="submit" class="btn btn-primary">Sign Up</button>
             </form>
             <p class="form-footer">Already have an account? <a href="{% url 'login' %}">Log in here</a>.</p>
