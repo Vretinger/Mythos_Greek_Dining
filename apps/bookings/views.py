@@ -3,15 +3,10 @@ from django.utils import timezone
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.http import JsonResponse
+from django.urls import reverse
 from .encoders import DateJSONEncoder 
 from .forms import BookingForm
 from .models import Booking
-
-from django.utils import timezone
-from django.contrib import messages
-from django.shortcuts import render, redirect
-from datetime import datetime
-from .forms import BookingForm
 
 def booking_create(request):
     if request.method == 'POST':
