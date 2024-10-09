@@ -101,6 +101,11 @@
                                     <a href="{% url 'login' %}" class="btn-collapse"><span>Sign up/Log in</span></a>
                                 {% endif %}
                             </li>
+                            {% if user.is_superuser %}
+                                <li class="nav-item p-2">
+                                    <a href="{% url 'admin' %}" class="btn-collapse"><span>Admin</span></a>
+                                </li>        
+                            {% endif %}                    
                         </ul>
                     </div>
                 </div>
