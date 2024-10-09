@@ -110,3 +110,7 @@ def create_booking(request):
 
     return render(request, 'create_booking.html', {'form': form})
 
+
+def check_IFadmin(request):
+    return render(request, 'base_generic.html', {})
+
