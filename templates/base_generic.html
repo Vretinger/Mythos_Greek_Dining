@@ -59,6 +59,11 @@
                                 <a href="{% url 'login' %}" class="hvr-fade"><span>Sign up/Log in</span></a>
                             {% endif %}
                         </li>
+                        {% if user.is_superuser %}
+                        <li class="nav-item p-2">
+                            <a href="{% url 'admin:index' %}" class="btn-collapse"><span>Admin</span></a>
+                        </li>        
+                        {% endif %} 
                     </ul>
                 </nav>
             </div>
@@ -101,10 +106,11 @@
                                     <a href="{% url 'login' %}" class="btn-collapse"><span>Sign up/Log in</span></a>
                                 {% endif %}
                             </li>
-                            <li class="nav-item p-2">
-                                <span>User is superuser: {{ request.user.is_superuser }}</span><br>
-                                <span>User is staff: {{ request.user.is_staff }}</span>
-                            </li>                                               
+                            {% if user.is_superuser %}
+                                <li class="nav-item p-2">
+                                    <a href="{% url 'admin:index' %}" class="btn-collapse"><span>Admin</span></a>
+                                </li>        
+                            {% endif %}                    
                         </ul>
                     </div>
                 </div>
