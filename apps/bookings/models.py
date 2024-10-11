@@ -52,10 +52,6 @@ class Booking(models.Model):
         cleaned_data = super().clean()
         print(cleaned_data)
 
-        # Define allowed booking time range
-        opening_time = time(10, 0)  # 10:00 AM
-        closing_time = time(22, 0)  # 10:00 PM
-
         
         # Make sure cleaned_data is not None
         if cleaned_data is None:
@@ -65,12 +61,6 @@ class Booking(models.Model):
         booking_time = cleaned_data.get('booking_time')
         number_of_guests = cleaned_data.get('number_of_guests')
         table = cleaned_data.get('table')
-
-
-        # Validate booking time
-        if not booking_date is None or booking_time is None:
-            if not (opening_time <= self.booking_time <= closing_time):
-                raise ValidationError('Booking time must be between 10:00 and 22:00.')
 
 
         # Validate table variable presence and get its buffer times

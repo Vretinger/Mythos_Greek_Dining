@@ -8,6 +8,11 @@ from .encoders import DateJSONEncoder
 from .forms import BookingForm
 from .models import Booking
 
+
+# Define allowed booking time range
+opening_time = time(10, 0)  # 10:00 AM
+closing_time = time(22, 0)  # 10:00 PM
+
 def booking_create(request):
     if request.method == 'POST':
         form = BookingForm(request.POST)
@@ -18,6 +23,10 @@ def booking_create(request):
             if booking_date is None or booking_time is None:
                 form.add_error(None, 'Booking date and time must be provided.')
                 return render(request, 'bookings/booking_form.html', {'form': form})
+            elif not (opening_time <= booking_time <= closing_time):
+                form.add_error(None, 'Booking time must be between 10:00 and 22:00.')
+                return render(request, 'bookings/booking_form.html', {'form': form})
+
 
             booking_datetime = timezone.make_aware(datetime.combine(booking_date, booking_time))
             if booking_datetime < timezone.now():
