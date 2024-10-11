@@ -68,8 +68,9 @@ class Booking(models.Model):
 
 
         # Validate booking time
-        if not (opening_time <= self.booking_time <= closing_time):
-            raise ValidationError('Booking time must be between 10:00 and 22:00.')
+        if not booking_date is None or booking_time is None:
+            if not (opening_time <= self.booking_time <= closing_time):
+                raise ValidationError('Booking time must be between 10:00 and 22:00.')
 
 
         # Validate table variable presence and get its buffer times
