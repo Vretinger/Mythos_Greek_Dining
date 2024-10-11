@@ -36,6 +36,7 @@ def login_view(request):
         form = CustomAuthenticationForm(request, data=request.POST)
         if form.is_valid():
             login(request, form.get_user())
+            messages.success(request, 'You have successfully logged in!')
             return redirect(next_url)  # Redirect to 'next' URL or fallback
     else:
         form = CustomAuthenticationForm()
@@ -72,6 +73,7 @@ def edit_booking(request, booking_id):
         form = BookingForm(request.POST, instance=booking)
         if form.is_valid():
             form.save()
+            messages.info(request, 'Booking edit successful.')
             return redirect('manage_bookings')  # Adjust this as needed
     else:
         form = BookingForm(instance=booking)
@@ -83,6 +85,7 @@ def delete_booking(request, booking_id):
 
     if request.method == 'POST':
         booking.delete()
+        messages.warning(request, 'You have deleted a booking!')
         return redirect('manage_bookings')  # Redirect to the bookings management page
 
     return render(request, 'manage_bookings', {'booking': booking})
