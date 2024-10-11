@@ -52,7 +52,6 @@ def booking_create(request):
                 booking.user = request.user
                 booking.guest_email = request.user.email  # Ensure email is saved
                 booking.save()
-                messages.success(request, 'Your booking has been confirmed successfully!')
                 del request.session['booking_data']  # Clear session after booking
                 return redirect('bookings:booking_success')
 
@@ -101,7 +100,6 @@ def booking_success(request):
             confirmed=True,  # Mark as confirmed
         )
         booking.save()
-        messages.success(request, 'Your booking has been confirmed successfully!')
 
         # Clear the booking data from the session
         del request.session['booking_data']

@@ -7,6 +7,20 @@
 <div class="container-fluid p-0">
     <!-- Hero Section -->
     <section class="hero">
+        <!-- Alert container for messages at the top of the screen -->
+        <div id="alert-container" class="position-fixed top-0 start-50 translate-middle-x p-3" style="z-index: 1050;">
+            <!-- Django messages framework alerts -->
+            {% if messages %}
+            <div>
+                {% for message in messages %}
+                <div class="alert alert-{{ message.tags }} alert-dismissible fade show mt-2" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
         <div class="hero-text text-center">
             <h1 class="display-4">Mythos: Where Every Meal is a Mythic Experience</h1>
             <a href="{% url 'bookings:booking_create' %}" class="btn btn-primary btn-lg">Book a Table Now</a>
