@@ -74,6 +74,13 @@ body {
     }
 }
 
+#alert-container {
+    width: 100%;
+    max-width: 600px; /* Adjust the width as needed */
+    margin: 0 auto;
+    z-index: 1050; /* Ensures it stays above other elements */
+}
+
 /* Navbar Styles */
 #navbar {
     position: fixed;
