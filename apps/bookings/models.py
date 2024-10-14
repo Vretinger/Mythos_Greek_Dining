@@ -7,6 +7,7 @@ from django.conf import settings
 from datetime import datetime, time
 from django.utils import timezone
 
+
 class Table(models.Model):
     table_number = models.IntegerField(unique=True)
     capacity = models.IntegerField()
@@ -34,17 +35,15 @@ class Booking(models.Model):
     dietary_preferences = models.TextField(blank=True, null=True)
     additional_notes = models.TextField(blank=True, null=True)
     confirmed = models.BooleanField(default=True)  # Set default to True
-    
+
     # Foreign key to associate booking with user
     user = models.ForeignKey(
-        settings.AUTH_USER_MODEL, 
-        on_delete=models.CASCADE, 
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
         related_name='booking_set_bookings',
         null=True   # Custom related name
     )
 
-
-    
     def __str__(self):
         return f"Booking for {self.guest_name} on {self.booking_date} at {self.booking_time}"
 
@@ -52,16 +51,14 @@ class Booking(models.Model):
         cleaned_data = super().clean()
         print(cleaned_data)
 
-        
         # Make sure cleaned_data is not None
         if cleaned_data is None:
             cleaned_data = {}
-            
+
         booking_date = cleaned_data.get('booking_date')
         booking_time = cleaned_data.get('booking_time')
         number_of_guests = cleaned_data.get('number_of_guests')
         table = cleaned_data.get('table')
-
 
         # Validate table variable presence and get its buffer times
         if table:
@@ -85,7 +82,5 @@ class Booking(models.Model):
                 )
             ).exists():
                 raise ValidationError('This table is already booked for the selected date and time.')
-        
 
         return cleaned_data
-

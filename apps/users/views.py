@@ -26,7 +26,7 @@ def register(request):
                 return redirect(next_url)  # Redirect to 'next' URL or fallback
     else:
         form = CustomUserCreationForm()
-    
+
     return render(request, 'register.html', {'form': form})
 
 
@@ -40,14 +40,14 @@ def login_view(request):
             return redirect(next_url)  # Redirect to 'next' URL or fallback
     else:
         form = CustomAuthenticationForm()
-    
-    return render(request, 'login.html', {'form': form})
 
+    return render(request, 'login.html', {'form': form})
 
 
 def custom_logout(request):
     logout(request)
     return redirect('home')
+
 
 def manage_bookings(request):
     if request.user.is_authenticated:
@@ -91,7 +91,6 @@ def delete_booking(request, booking_id):
     return render(request, 'manage_bookings', {'booking': booking})
 
 
-
 def create_booking(request):
     if request.method == 'POST':
         form = BookingForm(request.POST)
@@ -112,4 +111,3 @@ def create_booking(request):
         form = BookingForm()
 
     return render(request, 'create_booking.html', {'form': form})
-

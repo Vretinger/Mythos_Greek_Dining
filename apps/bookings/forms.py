@@ -4,10 +4,21 @@ from django.core.exceptions import ValidationError
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Field, Row, Column, Submit
 
+
 class BookingForm(forms.ModelForm):
     class Meta:
         model = Booking
-        fields = ['phone', 'guest_name', 'guest_email', 'booking_date', 'booking_time', 'number_of_guests', 'allergies', 'dietary_preferences', 'additional_notes' ]
+        fields = [
+            'phone',
+            'guest_name',
+            'guest_email',
+            'booking_date',
+            'booking_time',
+            'number_of_guests',
+            'allergies',
+            'dietary_preferences',
+            'additional_notes'
+        ]
 
     def __init__(self, *args, **kwargs):
         # Initialize the form and set up Crispy Forms helper for layout
@@ -17,7 +28,8 @@ class BookingForm(forms.ModelForm):
         self.helper.form_class = 'form-horizontal'
         # Add the submit button with Crispy Forms
         self.helper.add_input(Submit('submit', 'Book Now'))
-        # Define the form layout with Crispy Forms to arrange fields in rows and columns
+        # Define the form layout with Crispy Forms
+        # to arrange fields in rows and columns
         self.helper.layout = Layout(
             Row(
                 Column(Field('guest_name', css_class='form-control'), css_class='form-group col-md-6 mb-0'),
@@ -65,6 +77,8 @@ class BookingForm(forms.ModelForm):
                     (booking_datetime + buffer_after).time()
                 )
             ).exists():
-                raise ValidationError('This table is already booked for the selected date and time.')
+                raise ValidationError( 
+                    'This table is already booked for the selected date and time.'
+                    )
 
         return cleaned_data

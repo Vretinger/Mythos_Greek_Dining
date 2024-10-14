@@ -5,8 +5,9 @@ from .forms import ContactForm
 from .models import ContactMessage
 from django.contrib.messages import get_messages
 
+
 class ContactFormTest(TestCase):
-    
+
     def test_valid_form(self):
         form_data = {
             'name': 'John Doe',
@@ -27,6 +28,7 @@ class ContactFormTest(TestCase):
         form = ContactForm(data=form_data)
         self.assertFalse(form.is_valid())
         self.assertIn('name', form.errors)
+
 
 class ContactViewTest(TestCase):
 

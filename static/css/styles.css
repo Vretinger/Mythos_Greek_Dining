@@ -3,20 +3,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Caesar+Dressing&display=swap:100,200,300,400,500,600,700|Exo:100,200,300,400,500,600,700');
 
 /* Base Styles */
+/* Apply height to html and body, and remove default margin */
 html, body {
     height: 100%;
     margin: 0;
 }
 
+/* Set default font family for the body */
 body {
     font-family: 'Roboto', sans-serif;
 }
 
+/* Error text styling */
 .error {
     font-size: 18px;
 }
 
 /* Hero Section */
+/* Hero section with full viewport height and background image */
 .hero {
     position: relative;
     width: 100%;
@@ -29,29 +33,34 @@ body {
     align-items: center;
     justify-content: center;
     color: #fff;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Text shadow for readability */
     z-index: 1;
 }
 
+/* Container for hero text */
 .hero-text {
     position: relative;
     z-index: 1;
     padding: 20px;
 }
 
+/* Hero section heading */
 .hero-text h1 {
     font-size: 3rem;
     font-weight: bold;
 }
 
+/* Button styling inside the hero section */
 .hero-text .btn {
     margin-top: 20px;
 }
 
+/* About Us section background color */
 .about-us {
     background-color: #F5F8EF;
 }
 
+/* Keyframes for sliding in the background */
 @keyframes slideIn {
     from {
         transform: translateY(-100%);
@@ -63,6 +72,7 @@ body {
     }
 }
 
+/* Keyframes for sliding out the background */
 @keyframes slideOut {
     from {
         transform: translateY(0);
@@ -74,14 +84,16 @@ body {
     }
 }
 
+/* Alert container styling */
 #alert-container {
     width: 100%;
-    max-width: 600px; /* Adjust the width as needed */
+    max-width: 600px;
     margin: 0 auto;
-    z-index: 1050; /* Ensures it stays above other elements */
+    z-index: 1050; /* Ensure alerts stay above other elements */
 }
 
 /* Navbar Styles */
+/* Fixed navbar at the top */
 #navbar {
     position: fixed;
     top: 0;
@@ -94,16 +106,19 @@ body {
     justify-content: center;
 }
 
+/* Placeholder for the navbar's space */
 #navbar-placeholder {
     height: 150px;
     width: 100%;
 }
 
+/* Navbar when it becomes fixed after scrolling */
 #navbar.fixed {
     height: 60px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
+/* Background of the navbar */
 .bg-navbar {
     position: absolute;
     top: 0;
@@ -115,31 +130,35 @@ body {
     z-index: -1;
 }
 
+/* Animation for when the navbar is scrolled */
 #navbar.scrolled .bg-navbar {
     animation: slideIn 0.5s forwards;
 }
 
+/* Animation for when the navbar is not scrolled */
 #navbar:not(.scrolled) .bg-navbar {
     animation: slideOut 0.5s forwards;
 }
 
+/* Navbar content styling */
 .navbar-content {
     flex-direction: column;
     align-items: center;
     justify-content: center;
     position: absolute;
-    transform: translatey(-25%);
+    transform: translateY(-25%);
     text-align: center;
     z-index: 10;
     opacity: 1;
     transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
+/* Links in the navbar, removing default underline */
 .navbar-content a {
     text-decoration: none; /* Remove underline */
 }
 
-
+/* Navbar link hover states */
 .nav a, .btn-collapse a {
     text-decoration: none; /* Removes underline */
 }
@@ -148,6 +167,7 @@ body {
     text-decoration: none; /* Ensures underline is not added on hover */
 }
 
+/* Navbar collapse button styling */
 .btn-collapse {
     color: #222;
     font-size: 20px;
@@ -155,20 +175,24 @@ body {
     justify-content: center;
 }
 
+/* Background color for dropdown menu */
 .bg-drop-down {
     background-color: #F5F8EF;
 }
 
+/* Positioning for dropdown menu */
 .drop-down {
     left: 0;
 }
 
+/* Navbar toggle icon styling */
 .toggler-icon {
     font-size: 1.5rem;
     transition: transform 0.3s ease;
     color: rgba(0, 0, 0, 0.664);
 }
 
+/* Control display of closed and open states for toggler */
 .navbar-toggler[aria-expanded="true"] .closed {
     display: none;
 }
@@ -185,45 +209,62 @@ body {
     display: none;
 }
 
+/* Navbar toggle button styling */
 .navbar-toggler {
     position: relative;
     z-index: 2;
-    transform: translatey(25%);
+    transform: translateY(25%);
     border: 2px solid transparent;
 }
 
+/* Dark mode navbar toggle button styling */
 .navbar-dark .navbar-toggler {
     border-color: rgba(0, 0, 0, 0.664);
 }
 
+/* Media query for screens smaller than 768px */
 @media (max-width: 768px) {
     #navbar {
         height: 100px;
         transform: translateY(-30px);
     }
+    
+    /* Disable navbar animations on small screens */
     #navbar:not(.scrolled) .bg-navbar {
         animation: none;
     }
+    
     #navbar.scrolled .bg-navbar {
         animation: none;
     }
+    
+    /* Set background color for navbar on small screens */
     .bg-navbar {
         background-color: #F5F8EF;
     }
+    
+    /* Adjust navbar content position */
     .navbar-content {
-        transform: translatey(40%);
+        transform: translateY(40%);
         padding-left: 10%;
     }
+    
+    /* Center the nav items on small screens */
     #nav {
         text-align: center !important;
     }
+    
+    /* Ensure each menu item appears as a block element */
     .menuitem {
         display: block;
     }
+    
+    /* Ensure each span in the menu item is block */
     .menuitem span {
         display: block;
     }
 }
+
 
 /* Navbar Collapse */
 .pos-f-t {
@@ -617,7 +658,7 @@ body {
 
 
 .scrollable-container {
-    height: 500px;  /* Adjust the height to your preference */
+    height: 500px;  
     overflow-y: auto;   /* Enable vertical scrolling */
     padding-right: 15px;  /* Add some padding to avoid clipping */
     padding-left: 15px;

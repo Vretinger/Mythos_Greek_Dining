@@ -8,6 +8,7 @@ from datetime import datetime, timedelta
 from .models import Booking, Table
 from .forms import BookingForm
 
+
 class BookingModelTest(TestCase):
     def setUp(self):
         # Create a sample table for testing
@@ -118,7 +119,3 @@ class BookingViewTest(TestCase):
 
         # Assert that the response contains the validation error message
         self.assertContains(response, 'The selected date and time have already passed.')
-
-        
-
-

@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.http import JsonResponse
 from django.urls import reverse
-from .encoders import DateJSONEncoder 
+from .encoders import DateJSONEncoder
 from .forms import BookingForm
 from .models import Booking
 
@@ -12,6 +12,7 @@ from .models import Booking
 # Define allowed booking time range
 opening_time = time(10, 0)  # 10:00 AM
 closing_time = time(22, 0)  # 10:00 PM
+
 
 def booking_create(request):
     if request.method == 'POST':
@@ -26,7 +27,6 @@ def booking_create(request):
             elif not (opening_time <= booking_time <= closing_time):
                 form.add_error(None, 'Booking time must be between 10:00 and 22:00.')
                 return render(request, 'bookings/booking_form.html', {'form': form})
-
 
             booking_datetime = timezone.make_aware(datetime.combine(booking_date, booking_time))
             if booking_datetime < timezone.now():
@@ -69,15 +69,13 @@ def booking_create(request):
             form_data.update({
                 'guest_name': request.user.get_full_name() or request.user.username,
                 'guest_email': request.user.email,
-                'phone': request.user.phone_number,  
+                'phone': request.user.phone_number,
             })
 
         # Initialize the form with either session or user data
         form = BookingForm(initial=form_data)
 
     return render(request, 'bookings/booking_form.html', {'form': form})
-
-
 
 
 def booking_success(request):
@@ -116,4 +114,3 @@ def booking_success(request):
         }, encoder=DateJSONEncoder)
 
     return render(request, 'bookings/booking_success.html')
-

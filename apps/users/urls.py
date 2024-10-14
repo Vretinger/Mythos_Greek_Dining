@@ -2,6 +2,7 @@ from django.urls import path
 from . import views
 from .views import register, login_view, manage_bookings, custom_logout, edit_booking, delete_booking
 
+
 urlpatterns = [
     path('login/', login_view, name='login'),
     path('signup/', register, name='signup'),  # Assuming this is your signup

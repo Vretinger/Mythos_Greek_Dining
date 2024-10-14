@@ -18,8 +18,6 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-
-
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
@@ -46,7 +44,7 @@ SECRET_KEY = 'django-insecure-#e_(j!oy_&6=^(a*at$w$$1!5fueg)$=y(bguleykj7w@k0387
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['8000-vretinger-mythosgreekdi-b6wkymmemuv.ws-eu116.gitpod.io','.herokuapp.com']
+ALLOWED_HOSTS = ['8000-vretinger-mythosgreekdi-b6wkymmemuv.ws-eu116.gitpod.io', '.herokuapp.com']
 
 CSRF_TRUSTED_ORIGINS = [
     'https://8000-vretinger-mythosgreekdi-b6wkymmemuv.ws-eu116.gitpod.io',
@@ -64,7 +62,7 @@ INSTALLED_APPS = [
     'django_extensions',
     'crispy_forms',
     'crispy_bootstrap5',
-    'apps.bookings', 
+    'apps.bookings',
     'apps.menu',
     'apps.contact',
     'apps.users',
@@ -114,8 +112,6 @@ DATABASES = {
 }
 
 DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
-
-
 
 
 # Password validation
