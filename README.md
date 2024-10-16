@@ -63,9 +63,7 @@ Agile methodology was employed to manage tasks effectively, allowing for flexibi
 <details>
 <summary> User Stories Template
 </summary>
-- As a first-time visitor, I want to browse the menu so that I can decide what to order.
-- As a registered user, I want to save my favorite dishes for easy access on future visits.
-- As an admin, I want to manage bookings to ensure proper table arrangements.
+"Add user stories"
 </details>
 
 ## Target Audience
@@ -137,11 +135,11 @@ Wireframes were created to outline the website's layout and user flow, ensuring 
 
 ### User Journey
 
-The user journey map outlines the steps a visitor takes from entering the website to making a reservation, emphasizing a smooth and engaging experience.
+<img src="documentation/wireframes/UserJourney.png" alt="Home Page" width="600"/>
 
 ### Database Schema
 
-The database schema includes tables for users, bookings, menu items, and special requests, ensuring organized data storage.
+<img src="documentation/wireframes/DataBaseScheme.JPG" alt="Home Page" width="600"/>
 
 ## Security Features
 
@@ -324,6 +322,7 @@ The database schema includes tables for users, bookings, menu items, and special
 - Heroku for deployment
 - PostgreSQL for database management
 - Google fonts, Import main font the website
+- Figma, Used to create wireframes and schemes
 
 ## Deployment and Local Development
 
