@@ -263,6 +263,11 @@ body {
     .menuitem span {
         display: block;
     }
+
+    .form-content {
+        min-height: none;
+        min-width: none;
+    }
 }
 
 
@@ -626,6 +631,7 @@ body {
     border-radius: 10px; /* Rounded corners */
     padding: 15px; /* Inner padding */
     min-height: 450px;
+    min-width: 515px;
 }
 
 /* Style the form card */

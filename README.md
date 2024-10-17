@@ -249,6 +249,11 @@ Wireframes were created to outline the website's layout and user flow, ensuring 
 
 <img src="documentation/readme_images/Login.JPG" alt="Login" width="600"/>
 
+* **Login flashcards**
+    * Users get a confirmation that they have succefully logged in.
+
+<img src="documentation/readme_images/LogginFlashcard.JPG" alt="Login flash card" width="600"/>
+
 * **Manage Bookings**
     * Users can create, edit, and delete their bookings through a user-friendly interface.
 
