@@ -46,6 +46,7 @@ def login_view(request):
 
 def custom_logout(request):
     logout(request)
+    messages.warning(request, 'You have successfully logged out!')
     return redirect('home')
 
 
@@ -62,13 +63,19 @@ def manage_bookings(request):
                 booking.confirmed = False
                 booking.save()
     else:
-        bookings = Booking.objects.none()
+        return render(request, '404.html', status=404)
 
     return render(request, 'manage_bookings.html', {'bookings': bookings})
 
 
+@login_required
 def edit_booking(request, booking_id):
     booking = get_object_or_404(Booking, id=booking_id)
+
+    # Check if the current user is the owner of the booking
+    if booking.user != request.user:
+        return render(request, '404.html', status=404)
+
     if request.method == 'POST':
         form = BookingForm(request.POST, instance=booking)
         if form.is_valid():
@@ -77,6 +84,7 @@ def edit_booking(request, booking_id):
             return redirect('manage_bookings')  # Adjust this as needed
     else:
         form = BookingForm(instance=booking)
+    
     return render(request, 'edit_booking.html', {'form': form, 'booking': booking})
 
 

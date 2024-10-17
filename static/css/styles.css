@@ -625,6 +625,7 @@ body {
     background: rgba(255, 255, 255, 0.9); /* Semi-transparent background */
     border-radius: 10px; /* Rounded corners */
     padding: 15px; /* Inner padding */
+    min-height: 450px;
 }
 
 /* Style the form card */
