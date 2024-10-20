@@ -57,24 +57,22 @@ Agile methodology was employed to manage tasks effectively, allowing for flexibi
 
 * Epics were outlined to capture broader features and functionalities of the website.
 * User stories were created to focus on specific user needs, facilitating iterative development.
-* A public project board was maintained to track task progress across various stages: To Do, In Progress, and Done.
-* Labels were utilized to categorize issues based on priority and type.
+* A public project board was maintained to track task progress across various stages: Backlog, To Do, In Progress, Review/Testing and Done.
 
-  You can view the project board [here](documentation/TrelloProject.json).
+#### You can view the project board [here](https://trello.com/b/sXlEn8eC/mythos-greek-dining).
 
-### User Stories
+## User Stories
 
-## Epics
+### Epics
 - User Experience (UX)
 - Design and Layout
 - Booking System
 - Custom User Model
 - Automated Testing
-- Content Management
 - Deployment
 - Bug Fixes
 
-## User Stories
+### User Stories
 - Responsive Design
 - Intuitive Navigation
 - Booking Form
@@ -82,7 +80,6 @@ Agile methodology was employed to manage tasks effectively, allowing for flexibi
 - User Profile
 - Test Validation and Forms
 - Test Views and URLs
-- Manage Menu and Media
 - Bug Fixes (Navbar Responsiveness, Error Handling in Booking Form)
 - Future Features (User Reviews)
 
