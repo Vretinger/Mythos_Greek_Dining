@@ -60,11 +60,31 @@ Agile methodology was employed to manage tasks effectively, allowing for flexibi
 * A public project board was maintained to track task progress across various stages: To Do, In Progress, and Done.
 * Labels were utilized to categorize issues based on priority and type.
 
-<details>
-<summary> User Stories Template
-</summary>
-"Add user stories"
-</details>
+  You can view the project board [here](documentation/TrelloProject.json).
+
+### User Stories
+
+## Epics
+- User Experience (UX)
+- Design and Layout
+- Booking System
+- Custom User Model
+- Automated Testing
+- Content Management
+- Deployment
+- Bug Fixes
+
+## User Stories
+- Responsive Design
+- Intuitive Navigation
+- Booking Form
+- User Authentication
+- User Profile
+- Test Validation and Forms
+- Test Views and URLs
+- Manage Menu and Media
+- Bug Fixes (Navbar Responsiveness, Error Handling in Booking Form)
+- Future Features (User Reviews)
 
 ## Target Audience
 
