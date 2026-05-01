@@ -44,13 +44,17 @@ if not SECRET_KEY:
     raise ImproperlyConfigured("DJANGO_SECRET_KEY environment variable is not set")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = os.environ.get('Debug')
 
-ALLOWED_HOSTS = ['8000-vretinger-mythosgreekdi-b6wkymmemuv.ws-eu116.gitpod.io', '.herokuapp.com']
+ALLOWED_HOSTS = os.environ.get(
+    "ALLOWED_HOSTS",
+    "localhost,127.0.0.1"
+).split(",")
 
-CSRF_TRUSTED_ORIGINS = [
-    'https://8000-vretinger-mythosgreekdi-b6wkymmemuv.ws-eu116.gitpod.io',
-]
+CSRF_TRUSTED_ORIGINS = os.environ.get(
+    "CSRF_TRUSTED_ORIGINS",
+    "https://localhost"
+).split(",")
 
 # Application definition
 
